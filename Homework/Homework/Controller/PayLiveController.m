@@ -147,7 +147,9 @@
     CGFloat offset = scrollView.contentOffset.y;
     [self.header mas_updateConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.view);
+        make.height.equalTo(@(350-offset));
     }];
+    NSLog(@"%f",offset);
 //    NSLog(@"%f",self.tablview.contentOffset.y);
 //    self.header.frame = CGRectMake(0, 0, self.view.bounds.size.width, offset);
     
