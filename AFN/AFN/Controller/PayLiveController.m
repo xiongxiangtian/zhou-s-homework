@@ -25,6 +25,8 @@
 @property(strong, nonatomic) UIBarButtonItem *btnDianDianDian;
 @property(strong, nonatomic) UIBarButtonItem *btnZhuanfa;
 @property(strong, nonatomic) UILabel *lbMoney;
+
+
 @end
 
 @implementation PayLiveController
