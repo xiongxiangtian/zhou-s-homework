@@ -25,6 +25,7 @@
 @property(strong, nonatomic) UIBarButtonItem *btnDianDianDian;
 @property(strong, nonatomic) UIBarButtonItem *btnZhuanfa;
 @property(strong, nonatomic) UILabel *lbMoney;
+@property(strong, nonatomic) UIView *container;
 
 
 @end
@@ -42,8 +43,9 @@
     NSArray *arr = [NSArray arrayWithObjects:self.btnDianDianDian,self.btnZhuanfa, nil];
     self.navigationItem.rightBarButtonItems = arr;
     //设置tableview
-    [self.view addSubview:self.tablview];
-    [self.view addSubview:self.bottomView];
+    [self.view addSubview:self.container];
+    [self.container addSubview:self.tablview];
+    [self.container addSubview:self.bottomView];
     [self.bottomView addSubview:self.lbMoney];
     [self.bottomView addSubview:self.lbTbi];
     [self.bottomView addSubview:self.btnBuy];
@@ -52,23 +54,23 @@
     
     #pragma mark - 布局
     //tableview
-    [_tablview mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.view);
-        make.left.equalTo(self.view);
-        make.right.equalTo(self.view);
-        make.height.equalTo(@(self.view.bounds.size.height-130));
-    }];
+//    [_tablview mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.equalTo(self.view);
+//        make.left.equalTo(self.view);
+//        make.right.equalTo(self.view);
+//        make.bottom.equalTo(self.bottomView.mas_top);
+//    }];
     //header
-    [self.header mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.equalTo(self.tablview);
-        make.top.equalTo(self.tablview);
-        make.height.equalTo(@(350));
-    }];
+//    [self.header mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.right.equalTo(self.tablview);
+//        make.top.equalTo(self.tablview);
+//        make.height.equalTo(@(350));
+//    }];
     //底部view
-    [self.bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.bottom.equalTo(self.view);
-        make.height.equalTo(@60);
-    }];
+//    [self.bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.right.bottom.equalTo(self.view);
+//        make.height.equalTo(@60);
+//    }];
     //价格label
     [self.lbMoney mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.bottomView);
@@ -109,12 +111,13 @@
     return 1;
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return self.courseLists.count;
+//    return self.courseLists.count;
+    return 50;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     CoureseCell *cell = [CoureseCell cellWithTableview:tableView];
-    cell.courseModel = self.courseLists[indexPath.section];
+//    cell.courseModel = self.courseLists[indexPath.section];
     
     
     CGFloat red = arc4random() % 256 / 255.0;
@@ -125,49 +128,20 @@
 }
 
 
-//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-//    return 350;
-//}
 
-//footer
-//- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
-//    UIView* viewFooter = [[UIView alloc] initWithFrame:CGRectMake(0,0, self.view.bounds.size.width,60.0)];
-//    UILabel*lbFooter = [[UILabel alloc ]init ];
-//    lbFooter.frame =CGRectMake(0,20, self.view.bounds.size.width,20);
-//    lbFooter.text = @"没有更多了";
-//    lbFooter.textColor = [UIColor lightGrayColor];
-//    lbFooter.font = [UIFont systemFontOfSize:15];
-//    lbFooter.textAlignment =NSTextAlignmentCenter;
-//    [viewFooter addSubview:lbFooter];
-//    return viewFooter;
-//}
 
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     CGFloat offset = scrollView.contentOffset.y;
-    [self.header mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.view);
-        make.height.equalTo(@(350-offset));
-    }];
-    NSLog(@"%f",offset);
-//    NSLog(@"%f",self.tablview.contentOffset.y);
-//    self.header.frame = CGRectMake(0, 0, self.view.bounds.size.width, offset);
-    
 //    [self.header mas_updateConstraints:^(MASConstraintMaker *make) {
 //        make.top.equalTo(self.view);
 //        make.height.equalTo(@(350-offset));
-//        make.left.right.equalTo(self.tablview);
 //    }];
-//    [scrollView setContentOffset:CGPointMake(0, 0-offset)];
-//    NSLog(@"%f",offset);
+//
+//    [self.tablview reloadData];
+    [self.header setFrame:CGRectMake(0, 0, self.tablview.bounds.size.width, 350-offset)];
 }
 
-//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-//    return 1;
-//}
-//- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-//    return 1;
-//}
 
 #pragma mark - 数据请求
 - (void)requestData {
@@ -212,9 +186,8 @@
         _tablview.separatorStyle = UITableViewCellSelectionStyleNone;
         _tablview.showsVerticalScrollIndicator = NO;
 //        _tablview.sectionHeaderHeight = 0;
-        _tablview.sectionFooterHeight = 0;
         _tablview.backgroundColor = [UIColor systemPinkColor];
-//        _tablview.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 0.01)];
+        _tablview.frame = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height-120);
     }
     return _tablview;
 }
@@ -231,6 +204,9 @@
         _bottomView = [UIView new];
     }
     _bottomView.backgroundColor = [UIColor colorWithRed:54/255.0 green:59/255.0 blue:74/255.0 alpha:1];
+//    _bottomView.frame = CGRectMake(0, self.view.bounds.size.height-60, self.view.bounds.size.width, 60);
+    CGFloat nvheight = [UIApplication sharedApplication].statusBarFrame.size.height + self.navigationController.navigationBar.frame.size.height;
+    _bottomView.frame = CGRectMake(0, self.container.bounds.size.height-nvheight-60, self.container.bounds.size.width, 60);
     return _bottomView;
 }
 
@@ -271,6 +247,7 @@
         _header.layer.masksToBounds = YES;
         _header.backgroundColor = [UIColor colorWithRed:54/255.0 green:59/255.0 blue:74/255.0 alpha:1];
         _header.userInteractionEnabled = YES;
+        _header.frame = CGRectMake(0, 0, self.tablview.bounds.size.width, 350);
     }
     return _header;
 }
@@ -291,6 +268,14 @@
         [_btnDianDianDian setTintColor:[UIColor whiteColor]];
     }
     return _btnZhuanfa;
+}
+
+- (UIView *)container {
+    if (!_container) {
+        _container = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
+        _container.backgroundColor = [UIColor blackColor];
+    }
+    return _container;
 }
 
 - (void)payLiveHeaderBtnClick {
@@ -317,6 +302,7 @@
         j--;
     }
 }
+
 
 @end
 

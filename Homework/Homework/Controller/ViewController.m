@@ -9,34 +9,48 @@
 #import "ViewController.h"
 #import <Masonry/Masonry.h>
 #import <AFNetworking/AFNetworking.h>
+#import "MyCell.h"
 
-@interface ViewController ()
+@interface ViewController () <UITableViewDelegate, UITableViewDataSource>
+@property(strong, nonatomic)UITableView *tableview;
 @property(strong, nonatomic)PayLiveController *payLiveVC;
-@property(strong, nonatomic)UIButton *btn;
-
+@property(copy, nonatomic)NSArray *arr;
+@property(copy, nonatomic)NSArray *arr1;
 @end
 
 @implementation ViewController
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.view addSubview:self.btn];
-    [self layoutUI];
-    self.btn.backgroundColor = [UIColor blueColor];
-    [self.btn addTarget:self action:@selector(btnCllick) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.tableview];
+    self.arr = [[NSArray alloc] initWithObjects:@"payLiveVC", nil];
+    self.arr1 = [[NSArray alloc] initWithObjects:self.payLiveVC, nil];
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.arr.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    MyCell *cell = [MyCell cellWithTableview:tableView];
+    cell.title = self.arr[indexPath.row];
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self.navigationController pushViewController:self.arr1[indexPath.row] animated:YES];
 }
 
 
-- (void)layoutUI {
-    [_btn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.equalTo(@30);
-        make.height.equalTo(@30);
-        make.centerX.equalTo(self.view.mas_centerX);
-        make.centerY.equalTo(self.view.mas_centerY);
-    }];
-}
 
-- (void)btnCllick {
-    [self.navigationController pushViewController:self.payLiveVC animated:YES];
+- (UITableView *)tableview {
+    if (!_tableview) {
+        _tableview = [UITableView new];
+        _tableview.delegate = self;
+        _tableview.dataSource = self;
+        _tableview.frame = self.view.frame;
+    }
+    return _tableview;
 }
 
 - (PayLiveController *)payLiveVC {
@@ -44,12 +58,5 @@
         _payLiveVC = [PayLiveController new];
     }
     return _payLiveVC;
-}
-
-- (UIButton *)btn {
-    if (!_btn) {
-        _btn = [[UIButton alloc] initWithFrame:CGRectZero];
-    }
-    return _btn;
 }
 @end

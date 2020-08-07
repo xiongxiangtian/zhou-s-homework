@@ -42,6 +42,7 @@
 		00741CC524DAA00D00F857CF /* SDWebImageImageIOCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 00741CA524DAA00D00F857CF /* SDWebImageImageIOCoder.m */; };
 		00741CC624DAA00D00F857CF /* UIButton+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 00741CA924DAA00D00F857CF /* UIButton+WebCache.m */; };
 		00741CC924DAD77600F857CF /* MyNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00741CC824DAD77600F857CF /* MyNavigationController.m */; };
+		00CF515424DC39040092F229 /* MyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 00CF515324DC39040092F229 /* MyCell.m */; };
 		00D8746724D8299F00FA5AEF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 00D8746624D8299F00FA5AEF /* AppDelegate.m */; };
 		00D8746D24D8299F00FA5AEF /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00D8746C24D8299F00FA5AEF /* ViewController.m */; };
 		00D8747224D829A300FA5AEF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00D8747124D829A300FA5AEF /* Assets.xcassets */; };
@@ -123,6 +124,8 @@
 		00741CAA24DAA00D00F857CF /* UIImage+GIF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+GIF.h"; sourceTree = "<group>"; };
 		00741CC724DAD77600F857CF /* MyNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyNavigationController.h; sourceTree = "<group>"; };
 		00741CC824DAD77600F857CF /* MyNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyNavigationController.m; sourceTree = "<group>"; };
+		00CF515224DC39040092F229 /* MyCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyCell.h; sourceTree = "<group>"; };
+		00CF515324DC39040092F229 /* MyCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyCell.m; sourceTree = "<group>"; };
 		00D8746224D8299F00FA5AEF /* Homework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Homework.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00D8746524D8299F00FA5AEF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		00D8746624D8299F00FA5AEF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -264,6 +267,8 @@
 				00D8748224D8415500FA5AEF /* PayLiveController.m */,
 				00741CC724DAD77600F857CF /* MyNavigationController.h */,
 				00741CC824DAD77600F857CF /* MyNavigationController.m */,
+				00CF515224DC39040092F229 /* MyCell.h */,
+				00CF515324DC39040092F229 /* MyCell.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -468,6 +473,7 @@
 				00D8747824D829A300FA5AEF /* main.m in Sources */,
 				00741C7124DA8C3000F857CF /* CertModel.m in Sources */,
 				00741CC624DAA00D00F857CF /* UIButton+WebCache.m in Sources */,
+				00CF515424DC39040092F229 /* MyCell.m in Sources */,
 				00741CC124DAA00D00F857CF /* SDWebImageGIFCoder.m in Sources */,
 				00741C6E24DA8C0500F857CF /* AuthenticationInfo.m in Sources */,
 				00741CAE24DAA00D00F857CF /* UIImageView+HighlightedWebCache.m in Sources */,
