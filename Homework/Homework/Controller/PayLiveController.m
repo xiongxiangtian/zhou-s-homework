@@ -13,7 +13,17 @@
 #import <AFNetworking/AFNetworking.h>
 #import "UIImageView+WebCache.h"
 #import "PayLiveHeader.h"
-@interface PayLiveController () <PayLiveHeaderDelegate>
+
+#warning - 类注释
+
+
+@interface PayLiveController ()<
+PayLiveHeaderDelegate,
+UITableViewDelegate,
+UITableViewDataSource
+>
+
+#warning - 命名、空格、拼音、注释
 @property(strong, nonatomic)NSMutableArray<CourseModel *> *courseLists;
 @property(strong, nonatomic)LiveModel *model;
 @property(strong, nonatomic)UITableView *tablview;
@@ -33,6 +43,12 @@
 @implementation PayLiveController
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    //请求数据
+    [self requestData];
+    
+    #warning - 视图创建抽一个方法出去
+
     self.view.backgroundColor = [UIColor whiteColor];
     //设置导航栏
     self.navigationController.navigationBar.translucent = NO;
@@ -49,8 +65,7 @@
     [self.bottomView addSubview:self.lbMoney];
     [self.bottomView addSubview:self.lbTbi];
     [self.bottomView addSubview:self.btnBuy];
-    //请求数据
-    [self requestData];
+
     
     #pragma mark - 布局
     //tableview
@@ -90,7 +105,6 @@
         make.width.equalTo(@100);
     }];
     
-    self.header.delegate = self;
 }
 
 -(UIStatusBarStyle)preferredStatusBarStyle{
@@ -141,6 +155,16 @@
 //    [self.tablview reloadData];
     [self.header setFrame:CGRectMake(0, 0, self.tablview.bounds.size.width, 350-offset)];
 }
+
+
+
+#pragma mark - Life cycle
+#pragma mark - Setter
+#pragma mark - Action
+#pragma mark - Custom Function
+#pragma mark - Delegate
+#pragma mark - Lazy
+
 
 
 #pragma mark - 数据请求
@@ -248,6 +272,7 @@
         _header.backgroundColor = [UIColor colorWithRed:54/255.0 green:59/255.0 blue:74/255.0 alpha:1];
         _header.userInteractionEnabled = YES;
         _header.frame = CGRectMake(0, 0, self.tablview.bounds.size.width, 350);
+        _header.delegate = self;
     }
     return _header;
 }

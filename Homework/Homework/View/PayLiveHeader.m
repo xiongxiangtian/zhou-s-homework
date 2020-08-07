@@ -19,7 +19,10 @@
 @property(strong, nonatomic) NSString *imgBannerUrl;
 @property(strong, nonatomic) UILabel *lbTitle;//标题
 @property(strong, nonatomic) UILabel *lbKeshi;//课时
-@property(strong, nonatomic) UILabel *lbState;//是否完结
+//是否完结
+
+
+@property(strong, nonatomic) UILabel *lbState;
 @property(strong, nonatomic) UIView *jianjieView;//简介
 @property(strong, nonatomic) UILabel *lbJianjieTitle;
 @property(strong, nonatomic) UILabel *lbJIanjie;
