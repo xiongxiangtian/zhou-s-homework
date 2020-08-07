@@ -53,6 +53,8 @@ UITableViewDataSource
 /// 背景容器
 @property(nonatomic, strong) UIView *container;
 
+/// header背景
+@property(nonatomic, strong) UIView *bgView;
 @end
 
 @implementation PayLiveController
@@ -79,24 +81,14 @@ UITableViewDataSource
      */
     static int j = 0;
     if (j==0) {
-        [self.header mas_remakeConstraints:^(MASConstraintMaker *make) {
-            make.left.right.equalTo(self.view);
-            make.top.equalTo(self.view);
-            make.height.equalTo(@(450));
-        }];
-        [self.tableView setContentInset:UIEdgeInsetsMake(450, 0, 0, 0)];
-        self.tableView.contentOffset = CGPointMake(0,-450);
-        NSLog(@"%f",self.tableView.contentOffset.y);
-            [self.tableView reloadData];
+        CGRect rect = CGRectMake(0, 0, self.view.bounds.size.width, 450);
+        self.header.frame = rect;
+        [self.tableView setTableHeaderView:self.header];
         j++;
     }else if (j==1) {
-        [self.header mas_remakeConstraints:^(MASConstraintMaker *make) {
-            make.left.right.equalTo(self.view);
-            make.top.equalTo(self.view);
-            make.height.equalTo(@(350));
-        }];
-            self.tableView.contentInset = UIEdgeInsetsMake(350, 0, 0, 0);
-            [self.tableView reloadData];
+        CGRect rect = CGRectMake(0, 0, self.view.bounds.size.width, 350);
+        self.header.frame = rect;
+        [self.tableView setTableHeaderView:self.header];
         j--;
     }
 }
@@ -159,20 +151,19 @@ UITableViewDataSource
 
 ///section个数
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-//    return self.courseLists.count;
-    return 50;
+    return self.courseLists.count;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 70;
 }
 
 ///cell中的内容
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     CoureseCell *cell = [CoureseCell cellWithTableview:tableView];
-//    cell.courseModel = self.courseLists[indexPath.section];
+    cell.courseModel = self.courseLists[indexPath.section];
     
     
-    CGFloat red = arc4random() % 256 / 255.0;
-    CGFloat green = arc4random() % 256 / 255.0;
-    CGFloat blue = arc4random() % 256 / 255.0;
-    cell.backgroundColor = [UIColor colorWithRed:red green:green blue:blue alpha:1];
     return cell;
 }
 
@@ -183,14 +174,7 @@ UITableViewDataSource
 ///tableview滑动代理
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     CGFloat offset = scrollView.contentOffset.y;
-    if (offset<0) {
-        CGRect rect = self.header.frame;
-        rect.origin.y = offset;
-        rect.size.height = 350-offset;
-        self.header.frame = rect;
-        NSLog(@"%f",self.header.frame.origin.y);
-    }
-    
+    [self.bgView setFrame:CGRectMake(0, offset, self.view.bounds.size.width, -offset)];
     
 }
 
@@ -254,9 +238,9 @@ UITableViewDataSource
         _tableView.tableHeaderView = self.header;
         _tableView.separatorStyle = UITableViewCellSelectionStyleNone;
         _tableView.showsVerticalScrollIndicator = NO;
-//        _tablview.sectionHeaderHeight = 0;
-        _tableView.backgroundColor = [UIColor systemPinkColor];
         _tableView.frame = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height-120);
+        _tableView.estimatedRowHeight = 0;
+        _tableView.estimatedSectionFooterHeight = 0;
     }
     return _tableView;
 }
@@ -264,12 +248,14 @@ UITableViewDataSource
 - (PayLiveHeader *)header {
     if (!_header) {
         _header = [[PayLiveHeader alloc] init];
-        _header.layer.masksToBounds = YES;
         _header.backgroundColor = [UIColor colorWithRed:54/255.0 green:59/255.0 blue:74/255.0 alpha:1];
         _header.userInteractionEnabled = YES;
         [_header sizeToFit];
         [_header setFrame:CGRectMake(0, 0, 0, 350)];
         _header.delegate = self;
+        _bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 0)];
+        [_header addSubview:self.bgView];
+        _bgView.backgroundColor = [UIColor colorWithRed:54/255.0 green:59/255.0 blue:74/255.0 alpha:1];
     }
     return _header;
 }

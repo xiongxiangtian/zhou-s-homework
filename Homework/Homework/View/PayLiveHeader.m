@@ -100,7 +100,7 @@
     [_jianjieView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self);
         make.right.equalTo(self);
-        make.bottom.equalTo(self.btnMore.mas_top);
+        make.top.equalTo(self.mas_top).offset(160);
         make.height.equalTo(@100);
     }];
     [_lbJianjieTitle mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -363,7 +363,7 @@
         [self.jianjieView mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(self);
             make.right.equalTo(self);
-            make.bottom.equalTo(self.btnMore.mas_top);
+            make.top.equalTo(self).offset(160);
             make.height.equalTo(@100);
         }];
         i--;
