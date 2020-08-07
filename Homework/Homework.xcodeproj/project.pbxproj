@@ -11,8 +11,6 @@
 		00741C6124DA4E8A00F857CF /* SPUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 00741C6024DA4E8A00F857CF /* SPUser.m */; };
 		00741C6724DA509C00F857CF /* CourseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 00741C6624DA509C00F857CF /* CourseModel.m */; };
 		00741C6A24DA50B600F857CF /* CoverModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 00741C6924DA50B600F857CF /* CoverModel.m */; };
-		00741C6E24DA8C0500F857CF /* AuthenticationInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 00741C6D24DA8C0500F857CF /* AuthenticationInfo.m */; };
-		00741C7124DA8C3000F857CF /* CertModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 00741C7024DA8C3000F857CF /* CertModel.m */; };
 		00741CAB24DAA00D00F857CF /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 00741C7324DAA00C00F857CF /* LICENSE */; };
 		00741CAC24DAA00D00F857CF /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 00741C7424DAA00C00F857CF /* README.md */; };
 		00741CAD24DAA00D00F857CF /* SDWebImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 00741C7D24DAA00C00F857CF /* SDWebImageManager.m */; };
@@ -63,10 +61,6 @@
 		00741C6624DA509C00F857CF /* CourseModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CourseModel.m; sourceTree = "<group>"; };
 		00741C6824DA50B600F857CF /* CoverModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoverModel.h; sourceTree = "<group>"; };
 		00741C6924DA50B600F857CF /* CoverModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoverModel.m; sourceTree = "<group>"; };
-		00741C6C24DA8C0500F857CF /* AuthenticationInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AuthenticationInfo.h; sourceTree = "<group>"; };
-		00741C6D24DA8C0500F857CF /* AuthenticationInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AuthenticationInfo.m; sourceTree = "<group>"; };
-		00741C6F24DA8C3000F857CF /* CertModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CertModel.h; sourceTree = "<group>"; };
-		00741C7024DA8C3000F857CF /* CertModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CertModel.m; sourceTree = "<group>"; };
 		00741C7324DAA00C00F857CF /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		00741C7424DAA00C00F857CF /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		00741C7624DAA00C00F857CF /* SDAnimatedImageRep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDAnimatedImageRep.h; sourceTree = "<group>"; };
@@ -169,10 +163,6 @@
 				00741C6624DA509C00F857CF /* CourseModel.m */,
 				00741C6824DA50B600F857CF /* CoverModel.h */,
 				00741C6924DA50B600F857CF /* CoverModel.m */,
-				00741C6C24DA8C0500F857CF /* AuthenticationInfo.h */,
-				00741C6D24DA8C0500F857CF /* AuthenticationInfo.m */,
-				00741C6F24DA8C3000F857CF /* CertModel.h */,
-				00741C7024DA8C3000F857CF /* CertModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -471,11 +461,9 @@
 				00741CC524DAA00D00F857CF /* SDWebImageImageIOCoder.m in Sources */,
 				00741CB524DAA00D00F857CF /* SDWebImageCoderHelper.m in Sources */,
 				00D8747824D829A300FA5AEF /* main.m in Sources */,
-				00741C7124DA8C3000F857CF /* CertModel.m in Sources */,
 				00741CC624DAA00D00F857CF /* UIButton+WebCache.m in Sources */,
 				00CF515424DC39040092F229 /* MyCell.m in Sources */,
 				00741CC124DAA00D00F857CF /* SDWebImageGIFCoder.m in Sources */,
-				00741C6E24DA8C0500F857CF /* AuthenticationInfo.m in Sources */,
 				00741CAE24DAA00D00F857CF /* UIImageView+HighlightedWebCache.m in Sources */,
 				00741CB324DAA00D00F857CF /* UIImage+GIF.m in Sources */,
 				00D8748824D8F3BB00FA5AEF /* PayLiveHeader.m in Sources */,

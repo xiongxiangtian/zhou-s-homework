@@ -64,7 +64,7 @@
     [self.userView addSubview:self.btnFollow];
     [self.userView addSubview:self.dvi1];
     [self.userView addSubview:self.dvi2];
-   
+    self.contentMode = UIViewContentModeScaleAspectFit;
 #pragma mark - 布局
     [_userView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.equalTo(self);

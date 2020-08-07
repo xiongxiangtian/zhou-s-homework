@@ -12,22 +12,19 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SPUser : JSONModel
-@property (strong, nonatomic) AuthenticationInfo *authenticationInfo;
+
+/// 用户信息
+//@property (strong, nonatomic) AuthenticationInfo *authenticationInfo;
+
+/// 用户头像
 @property (strong, nonatomic) NSString *avatar;
+
+/// 用户昵称
 @property (strong, nonatomic) NSString *nickname;
+
+/// 用户描述
 @property (strong, nonatomic) NSString *categoryAlias;
-//birthday
-//real_nickname
-//statusInfo
-//
-//gender
-//accountType
-//fansCount
-//avatar
-//type
-//isVerify
-//isMyself
-//isOfficial
+
 @end
 
 NS_ASSUME_NONNULL_END

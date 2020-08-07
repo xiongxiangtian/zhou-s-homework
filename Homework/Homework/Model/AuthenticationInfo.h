@@ -7,13 +7,12 @@
 //
 
 #import <JSONModel/JSONModel.h>
-#import "CertModel.h"
+
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface AuthenticationInfo : JSONModel
-@property (strong, nonatomic) NSArray <CertModel *> *certList;
-@property (assign, nonatomic) NSInteger type;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -22,6 +22,7 @@
     if (!cell) {
         cell = [[MyCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:MYCELL];
     }
+
     return cell;
 }
 

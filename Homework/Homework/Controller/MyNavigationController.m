@@ -1,10 +1,9 @@
-//
-//  MyNavigationController.m
-//  Homework
-//
-//  Created by 夕厚大魔王 on 2020/8/5.
-//  Copyright © 2020 夕厚大魔王. All rights reserved.
-//
+/**
+* @功能描述：自定义返回按钮
+* @创建时间：2020-8-7
+* @创建人：祖文渝
+* @备注:
+*/
 
 #import "MyNavigationController.h"
 
@@ -25,15 +24,4 @@
     item.backBarButtonItem = backItem;
     return YES;
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 @end

@@ -12,10 +12,10 @@
 #import "MyCell.h"
 
 @interface ViewController () <UITableViewDelegate, UITableViewDataSource>
-@property(strong, nonatomic)UITableView *tableview;
-@property(strong, nonatomic)PayLiveController *payLiveVC;
-@property(copy, nonatomic)NSArray *arr;
-@property(copy, nonatomic)NSArray *arr1;
+@property (nonatomic, strong) UITableView *tableview;
+@property (nonatomic, strong) PayLiveController *payLiveVC;
+@property (nonatomic, strong) NSArray *arr;
+@property (nonatomic, strong) NSArray *arr1;
 @end
 
 @implementation ViewController
@@ -40,8 +40,6 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.navigationController pushViewController:self.arr1[indexPath.row] animated:YES];
 }
-
-
 
 - (UITableView *)tableview {
     if (!_tableview) {

@@ -1,10 +1,9 @@
-//
-//  PayLiveController.m
-//  Homework
-//
-//  Created by 夕厚大魔王 on 2020/8/3.
-//  Copyright © 2020 夕厚大魔王. All rights reserved.
-//
+/**
+ * @功能描述：付费Live页面
+ * @创建时间：2020-08-07
+ * @创建人：祖文渝
+ * @备注:
+ */
 
 #import "PayLiveController.h"
 #import "CoureseCell.h"
@@ -14,121 +13,157 @@
 #import "UIImageView+WebCache.h"
 #import "PayLiveHeader.h"
 
-#warning - 类注释
-
-
+/// 付费Live页面
 @interface PayLiveController ()<
 PayLiveHeaderDelegate,
 UITableViewDelegate,
 UITableViewDataSource
 >
 
-#warning - 命名、空格、拼音、注释
-@property(strong, nonatomic)NSMutableArray<CourseModel *> *courseLists;
-@property(strong, nonatomic)LiveModel *model;
-@property(strong, nonatomic)UITableView *tablview;
-@property(strong, nonatomic)PayLiveHeader *header;
-@property(strong, nonatomic)UIView *jianjieView;
-@property(strong, nonatomic)UIView *bottomView;
-@property(strong, nonatomic) UILabel *lbTbi;
-@property(strong, nonatomic) UIButton *btnBuy;
-@property(strong, nonatomic) UIBarButtonItem *btnDianDianDian;
-@property(strong, nonatomic) UIBarButtonItem *btnZhuanfa;
-@property(strong, nonatomic) UILabel *lbMoney;
-@property(strong, nonatomic) UIView *container;
+///存放课程模型的数组
+@property(nonatomic, strong) NSMutableArray<CourseModel *> *courseLists;
 
+/// live模型
+@property(nonatomic, strong) LiveModel *model;
+
+/// 课程tableView
+@property(nonatomic, strong) UITableView *tableView;
+
+/// 页面信息header
+@property(nonatomic, strong) PayLiveHeader *header;
+
+/// 底部View
+@property(nonatomic, strong)UIView *bottomView;
+
+/// 底部T币二字
+@property(nonatomic, strong) UILabel *TLabel;
+
+/// 购买按钮
+@property(nonatomic, strong) UIButton *buyButton;
+
+/// 导航栏更多按钮
+@property(nonatomic, strong) UIBarButtonItem *moreBarbuttonItem;
+
+/// 导航栏转发按钮
+@property(nonatomic, strong) UIBarButtonItem *repostButton;
+
+/// 底部价格Label
+@property(strong, nonatomic) UILabel *moneyLabel;
+
+/// 背景容器
+@property(nonatomic, strong) UIView *container;
 
 @end
 
 @implementation PayLiveController
+
+#pragma mark - Life cycle
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    //导航栏
+    [self setupNavbar];
+    //页面布局
+    [self setupView];
     //请求数据
     [self requestData];
-    
-    #warning - 视图创建抽一个方法出去
+}
 
-    self.view.backgroundColor = [UIColor whiteColor];
-    //设置导航栏
+#pragma mark - Action
+- (void)payLiveHeaderBtnClick {
+    /**
+     需求描述：
+     点击按钮简介view向下扩展
+     代码逻辑：
+     定一个Int变量，点击后重新布局header的高度，变量加1
+     第二次点击变量减1，header高度复原。
+     */
+    static int j = 0;
+    if (j==0) {
+        [self.header mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.left.right.equalTo(self.view);
+            make.top.equalTo(self.view);
+            make.height.equalTo(@(450));
+        }];
+        [self.tableView setContentInset:UIEdgeInsetsMake(450, 0, 0, 0)];
+        self.tableView.contentOffset = CGPointMake(0,-450);
+        NSLog(@"%f",self.tableView.contentOffset.y);
+            [self.tableView reloadData];
+        j++;
+    }else if (j==1) {
+        [self.header mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.left.right.equalTo(self.view);
+            make.top.equalTo(self.view);
+            make.height.equalTo(@(350));
+        }];
+            self.tableView.contentInset = UIEdgeInsetsMake(350, 0, 0, 0);
+            [self.tableView reloadData];
+        j--;
+    }
+}
+
+#pragma mark - Custom Function
+/// 设置导航栏
+- (void)setupNavbar {
     self.navigationController.navigationBar.translucent = NO;
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:54/255.0 green:59/255.0 blue:74/255.0 alpha:1];
     self.navigationController.navigationBar.shadowImage = [UIImage new];
     self.navigationItem.title = @"付费Live";
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor],NSFontAttributeName : [UIFont fontWithName:@"Helvetica-Bold" size:17]}];
-    NSArray *arr = [NSArray arrayWithObjects:self.btnDianDianDian,self.btnZhuanfa, nil];
+    NSArray *arr = [NSArray arrayWithObjects:self.moreBarbuttonItem,self.repostButton, nil];
     self.navigationItem.rightBarButtonItems = arr;
+}
+
+/// 页面布局
+- (void)setupView {
+    self.view.backgroundColor = [UIColor whiteColor];
     //设置tableview
     [self.view addSubview:self.container];
-    [self.container addSubview:self.tablview];
+    [self.container addSubview:self.tableView];
     [self.container addSubview:self.bottomView];
-    [self.bottomView addSubview:self.lbMoney];
-    [self.bottomView addSubview:self.lbTbi];
-    [self.bottomView addSubview:self.btnBuy];
+    [self.bottomView addSubview:self.moneyLabel];
+    [self.bottomView addSubview:self.TLabel];
+    [self.bottomView addSubview:self.buyButton];
 
-    
-    #pragma mark - 布局
-    //tableview
-//    [_tablview mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.top.equalTo(self.view);
-//        make.left.equalTo(self.view);
-//        make.right.equalTo(self.view);
-//        make.bottom.equalTo(self.bottomView.mas_top);
-//    }];
-    //header
-//    [self.header mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.left.right.equalTo(self.tablview);
-//        make.top.equalTo(self.tablview);
-//        make.height.equalTo(@(350));
-//    }];
-    //底部view
-//    [self.bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.left.right.bottom.equalTo(self.view);
-//        make.height.equalTo(@60);
-//    }];
     //价格label
-    [self.lbMoney mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.moneyLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.bottomView);
         make.height.equalTo(@26);
         make.left.equalTo(self.bottomView).offset(15);
     }];
     //t币文字
-    [self.lbTbi mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.lbMoney.mas_right);
-        make.bottom.equalTo(self.lbMoney);
-        make.height.equalTo(self.lbMoney).multipliedBy(0.5);
+    [self.TLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.moneyLabel.mas_right);
+        make.bottom.equalTo(self.moneyLabel);
+        make.height.equalTo(self.moneyLabel).multipliedBy(0.5);
     }];
     //购买按钮
-    [self.btnBuy mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.buyButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self.bottomView).offset(-15);
-        make.top.bottom.equalTo(_lbMoney);
+        make.top.bottom.equalTo(_moneyLabel);
         make.width.equalTo(@100);
     }];
-    
 }
 
+
+#pragma mark - Delegate
+
+/// 状态栏文字颜色
 -(UIStatusBarStyle)preferredStatusBarStyle{
     return UIStatusBarStyleLightContent;
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-//    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-//    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
-}
-
-#pragma mark - tableview数据源、代理
+///tableview的section中cell的个数
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 1;
 }
+
+///section个数
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 //    return self.courseLists.count;
     return 50;
 }
 
+///cell中的内容
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     CoureseCell *cell = [CoureseCell cellWithTableview:tableView];
 //    cell.courseModel = self.courseLists[indexPath.section];
@@ -141,34 +176,35 @@ UITableViewDataSource
     return cell;
 }
 
-
-
-
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    CGFloat offset = scrollView.contentOffset.y;
-//    [self.header mas_updateConstraints:^(MASConstraintMaker *make) {
-//        make.top.equalTo(self.view);
-//        make.height.equalTo(@(350-offset));
-//    }];
-//
-//    [self.tablview reloadData];
-    [self.header setFrame:CGRectMake(0, 0, self.tablview.bounds.size.width, 350-offset)];
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 350;
 }
 
-
-
-#pragma mark - Life cycle
-#pragma mark - Setter
-#pragma mark - Action
-#pragma mark - Custom Function
-#pragma mark - Delegate
-#pragma mark - Lazy
-
-
+///tableview滑动代理
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    CGFloat offset = scrollView.contentOffset.y;
+    if (offset<0) {
+        CGRect rect = self.header.frame;
+        rect.origin.y = offset;
+        rect.size.height = 350-offset;
+        self.header.frame = rect;
+        NSLog(@"%f",self.header.frame.origin.y);
+    }
+    
+    
+}
 
 #pragma mark - 数据请求
+/// 数据请求
 - (void)requestData {
+    /**
+     需求描述：
+     请求网络接口，将请求的数据传入模型中。
+     代码逻辑：
+     调用AFN与JSONModel请求数据，请求成功后给self和header传模型。
+     header传入模型后调用initData方法展示数据。
+     self.tableview要reloadData。
+     */
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     NSString *url = @"http://47.111.114.205:12800/api-resource/paylive/info?userID=81154&currentCourse=0&payLiveID=139&userKey=2kkU82OiHWbYyvDOq2pFEdBdCSnchy6F";
     NSMutableDictionary *dic = [NSMutableDictionary new];
@@ -191,36 +227,51 @@ UITableViewDataSource
         self.header.liveModel = self.model;
         NSDictionary *dicSpuser = [live objectForKey:@"spUser"];
         self.header.spuserModel = [[SPUser alloc] initWithDictionary:dicSpuser error:nil];
-        self.lbMoney.text = [NSString stringWithFormat:@"%ld", (long)self.model.displayPrice];
+        self.moneyLabel.text = [NSString stringWithFormat:@"%ld", (long)self.model.displayPrice];
         [self.header initData];
-        [self.tablview reloadData];
+        [self.tableView reloadData];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         //失败毁掉
         NSLog(@"%@",error);
     }];
 }
 
-#pragma mark - 懒加载
-- (UITableView *)tablview {
-    if (!_tablview) {
-        _tablview = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
-        _tablview.delegate = self;
-        _tablview.dataSource = self;
-        _tablview.tableHeaderView = self.header;
-        _tablview.separatorStyle = UITableViewCellSelectionStyleNone;
-        _tablview.showsVerticalScrollIndicator = NO;
-//        _tablview.sectionHeaderHeight = 0;
-        _tablview.backgroundColor = [UIColor systemPinkColor];
-        _tablview.frame = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height-120);
-    }
-    return _tablview;
-}
+#pragma mark - Lazy
 
+/// 存放课程Model的课程数组
 - (NSMutableArray<CourseModel *> *)courseLists {
     if (!_courseLists) {
         _courseLists = [NSMutableArray new];
     }
     return _courseLists;
+}
+
+- (UITableView *)tableView {
+    if (!_tableView) {
+        _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+        _tableView.delegate = self;
+        _tableView.dataSource = self;
+        _tableView.tableHeaderView = self.header;
+        _tableView.separatorStyle = UITableViewCellSelectionStyleNone;
+        _tableView.showsVerticalScrollIndicator = NO;
+//        _tablview.sectionHeaderHeight = 0;
+        _tableView.backgroundColor = [UIColor systemPinkColor];
+        _tableView.frame = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height-120);
+    }
+    return _tableView;
+}
+
+- (PayLiveHeader *)header {
+    if (!_header) {
+        _header = [[PayLiveHeader alloc] init];
+        _header.layer.masksToBounds = YES;
+        _header.backgroundColor = [UIColor colorWithRed:54/255.0 green:59/255.0 blue:74/255.0 alpha:1];
+        _header.userInteractionEnabled = YES;
+        [_header sizeToFit];
+        [_header setFrame:CGRectMake(0, 0, 0, 350)];
+        _header.delegate = self;
+    }
+    return _header;
 }
 
 - (UIView *)bottomView {
@@ -234,65 +285,53 @@ UITableViewDataSource
     return _bottomView;
 }
 
-- (UILabel *)lbMoney {
-    if (!_lbMoney) {
-        _lbMoney = [UILabel new];
+- (UILabel *)TLabel {
+    if (!_TLabel) {
+        _TLabel = [UILabel new];
     }
-    _lbMoney.textColor = [UIColor colorWithRed:244/255.0 green:206/255.0 blue:143/255.0 alpha:1];
-    _lbMoney.font = [UIFont systemFontOfSize:30];
-    _lbMoney.text = @"1231231";
-    return _lbMoney;
+    _TLabel.text = @"T币";
+    _TLabel.textColor = [UIColor colorWithRed:244/255.0 green:206/255.0 blue:143/255.0 alpha:1];
+    return _TLabel;
 }
 
-- (UILabel *)lbTbi {
-    if (!_lbTbi) {
-        _lbTbi = [UILabel new];
-    }
-    _lbTbi.text = @"T币";
-    _lbTbi.textColor = [UIColor colorWithRed:244/255.0 green:206/255.0 blue:143/255.0 alpha:1];
-    return _lbTbi;
-}
-
-- (UIButton *)btnBuy {
-    if (!_btnBuy) {
-        _btnBuy = [UIButton new];
-        [_btnBuy setTitle:@"立即购买" forState:UIControlStateNormal];
-        _btnBuy.backgroundColor = [UIColor colorWithRed:244/255.0 green:206/255.0 blue:143/255.0 alpha:1];
-        _btnBuy.titleLabel.font = [UIFont systemFontOfSize:14];
-        _btnBuy.layer.masksToBounds = YES;
-        _btnBuy.layer.cornerRadius = 15;
+- (UIButton *)buyButton {
+    if (!_buyButton) {
+        _buyButton = [UIButton new];
+        [_buyButton setTitle:@"立即购买" forState:UIControlStateNormal];
+        _buyButton.backgroundColor = [UIColor colorWithRed:244/255.0 green:206/255.0 blue:143/255.0 alpha:1];
+        _buyButton.titleLabel.font = [UIFont systemFontOfSize:14];
+        _buyButton.layer.masksToBounds = YES;
+        _buyButton.layer.cornerRadius = 15;
     };
-    return _btnBuy;
+    return _buyButton;
 }
 
-- (PayLiveHeader *)header {
-    if (!_header) {
-        _header = [[PayLiveHeader alloc] init];
-        _header.layer.masksToBounds = YES;
-        _header.backgroundColor = [UIColor colorWithRed:54/255.0 green:59/255.0 blue:74/255.0 alpha:1];
-        _header.userInteractionEnabled = YES;
-        _header.frame = CGRectMake(0, 0, self.tablview.bounds.size.width, 350);
-        _header.delegate = self;
+- (UIBarButtonItem *)moreBarbuttonItem {
+    if (!_moreBarbuttonItem) {
+        _moreBarbuttonItem = [UIBarButtonItem new];
+        [_moreBarbuttonItem setTitle:@"..."];
+        [_moreBarbuttonItem setTintColor:[UIColor whiteColor]];
     }
-    return _header;
+    return _moreBarbuttonItem;
 }
 
-- (UIBarButtonItem *)btnDianDianDian {
-    if (!_btnDianDianDian) {
-        _btnDianDianDian = [UIBarButtonItem new];
-        [_btnDianDianDian setTitle:@"..."];
-        [_btnDianDianDian setTintColor:[UIColor whiteColor]];
+- (UIBarButtonItem *)repostButton {
+    if (!_repostButton) {
+        _repostButton = [UIBarButtonItem new];
+        [_repostButton setTitle:@"➡️"];
+        [_repostButton setTintColor:[UIColor whiteColor]];
     }
-    return _btnDianDianDian;
+    return _repostButton;
 }
 
-- (UIBarButtonItem *)btnZhuanfa {
-    if (!_btnZhuanfa) {
-        _btnZhuanfa = [UIBarButtonItem new];
-        [_btnZhuanfa setTitle:@"➡️"];
-        [_btnDianDianDian setTintColor:[UIColor whiteColor]];
+- (UILabel *)moneyLabel {
+    if (!_moneyLabel) {
+        _moneyLabel = [UILabel new];
     }
-    return _btnZhuanfa;
+    _moneyLabel.textColor = [UIColor colorWithRed:244/255.0 green:206/255.0 blue:143/255.0 alpha:1];
+    _moneyLabel.font = [UIFont systemFontOfSize:30];
+    _moneyLabel.text = @"1231231";
+    return _moneyLabel;
 }
 
 - (UIView *)container {
@@ -302,32 +341,6 @@ UITableViewDataSource
     }
     return _container;
 }
-
-- (void)payLiveHeaderBtnClick {
-    static int j = 0;
-    if (j==0) {
-        [self.header mas_remakeConstraints:^(MASConstraintMaker *make) {
-            make.left.right.equalTo(self.view);
-            make.top.equalTo(self.view);
-            make.height.equalTo(@(450));
-        }];
-        [self.tablview setContentInset:UIEdgeInsetsMake(450, 0, 0, 0)];
-        self.tablview.contentOffset = CGPointMake(0,-450);
-        NSLog(@"%f",self.tablview.contentOffset.y);
-            [self.tablview reloadData];
-        j++;
-    }else if (j==1) {
-        [self.header mas_remakeConstraints:^(MASConstraintMaker *make) {
-            make.left.right.equalTo(self.view);
-            make.top.equalTo(self.view);
-            make.height.equalTo(@(350));
-        }];
-            self.tablview.contentInset = UIEdgeInsetsMake(350, 0, 0, 0);
-            [self.tablview reloadData];
-        j--;
-    }
-}
-
 
 @end
 
