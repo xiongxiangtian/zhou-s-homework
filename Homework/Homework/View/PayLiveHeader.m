@@ -10,31 +10,47 @@
 #import "UIImageView+WebCache.h"
 #import "PayLiveController.h"
 
-
-
-
-
+/**
+ * @功能描述：显示封面介绍等
+ * @创建时间：2020-8-9
+ * @创建人：祖文渝
+ * @备注:
+ */
 @interface PayLiveHeader ()
-@property(strong, nonatomic) UIImageView *banner;//封面
+@property(strong, nonatomic) UIImageView *banner;
+///封面
 @property(strong, nonatomic) NSString *imgBannerUrl;
-@property(strong, nonatomic) UILabel *lbTitle;//标题
-@property(strong, nonatomic) UILabel *lbKeshi;//课时
+///标题
+@property(strong, nonatomic) UILabel *lbTitle;
+///课时
+@property(strong, nonatomic) UILabel *lbKeshi;
 //是否完结
-
-
 @property(strong, nonatomic) UILabel *lbState;
-@property(strong, nonatomic) UIView *jianjieView;//简介
+///简介view
+@property(strong, nonatomic) UIView *jianjieView;
+///简介title
 @property(strong, nonatomic) UILabel *lbJianjieTitle;
+///简介内容
 @property(strong, nonatomic) UILabel *introLabel;
-@property(strong, nonatomic) UIButton *btnMore;//下拉按钮
-@property(strong, nonatomic) UIView *userView;//用户卡片
-@property(strong, nonatomic) UILabel *username;//用户名
-@property(strong, nonatomic) UIImageView *avtar;//用户头像
+///下拉按钮
+@property(strong, nonatomic) UIButton *btnMore;
+///用户卡片
+@property(strong, nonatomic) UIView *userView;
+///用户名
+@property(strong, nonatomic) UILabel *username;
+///用户头像
+@property(strong, nonatomic) UIImageView *avtar;
+///用户头像url
 @property(strong, nonatomic) NSString *avtarUrl;
-@property(strong, nonatomic) UILabel *lbSchool;//用户信息
-@property(strong, nonatomic) UIButton *btnFollow;//关注按钮
+///用户信息
+@property(strong, nonatomic) UILabel *lbSchool;
+///关注按钮
+@property(strong, nonatomic) UIButton *btnFollow;
+///分割线
 @property(strong, nonatomic) UIView *dvi1;
+///分割线
 @property(strong, nonatomic) UIView *dvi2;
+
 @end
 
 @implementation PayLiveHeader
@@ -47,6 +63,7 @@
     return self;
 }
 
+/// 设置UI
 - (void)setupUI {
     self.backgroundColor = [UIColor colorWithRed:54/255.0 green:59/255.0 blue:74/255.0 alpha:1];
     [self addSubview:self.userView];
@@ -57,7 +74,7 @@
     [self addSubview:self.lbKeshi];
     [self addSubview:self.jianjieView];
     [self.jianjieView addSubview:self.lbJianjieTitle];
-    [self.jianjieView addSubview:self.introLabel];
+    [self addSubview:self.introLabel];
     [self.userView addSubview:self.avtar];
     [self.userView addSubview:self.username];
     [self.userView addSubview:self.lbSchool];
@@ -65,6 +82,7 @@
     [self.userView addSubview:self.dvi1];
     [self.userView addSubview:self.dvi2];
     self.contentMode = UIViewContentModeScaleAspectFit;
+    
 #pragma mark - 布局
     [_userView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.equalTo(self);
@@ -110,8 +128,8 @@
         make.height.equalTo(@20);
     }];
     [_introLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(_jianjieView).offset(15);
-        make.right.equalTo(_jianjieView).offset(-15);
+        make.left.equalTo(self).offset(15);
+        make.right.equalTo(self).offset(-15);
         make.height.equalTo(@45);
         make.top.equalTo(_lbJianjieTitle.mas_bottom).offset(5);
     }];
@@ -125,7 +143,7 @@
     }];
     [_banner mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self).offset(15);
-        make.bottom.equalTo(self.jianjieView.mas_top).offset(-20);
+        make.top.equalTo(self);
         make.height.equalTo(@140);
         make.width.equalTo(@95);
     }];
@@ -149,7 +167,7 @@
 - (void)initData {
     self.imgBannerUrl = self.coverModel.url;
     NSURL *urlBanner = [NSURL URLWithString:self.imgBannerUrl];
-    [self.banner sd_setImageWithURL:urlBanner];
+    [self.banner sd_setImageWithURL:urlBanner placeholderImage:[UIImage imageNamed:@"123"]];
     self.lbTitle.text = self.liveModel.title;
     self.lbState.text = self.liveModel.state == 1 ? @"连载中" : @"完结";
     self.lbKeshi.text = [NSString stringWithFormat:@"%ld期/%ld课时",(long)self.liveModel.currentCourse,(long)self.liveModel.totalCourse];
@@ -157,7 +175,49 @@
     self.avtarUrl = self.spuserModel.avatar;
     [self.avtar sd_setImageWithURL:self.avtarUrl placeholderImage:[UIImage imageNamed:@"123"]];
     self.lbSchool.text = self.spuserModel.categoryAlias;
-    self.introLabel.text = self.liveModel.info_description;
+//    self.introLabel.text = self.liveModel.info_description;
+    self.introLabel.text = @"asdawdawdawdawsdwdawdwadsadwadaasdawdawdawdawsdwdawdwadsadwadaasdawdawdawdawsdwdawasdawdawdawdawsdwdawdwadsadwadaasdawdawdawdawsdwdawdwadsadwadaasdawdawdawdawsdwdawdwadsadwadadwadsadwadaasdawdawdawdawsdwdawdwadsadwada";
+}
+
+#pragma mark - Action
+- (void)moreInfo:(PayLiveController *)controller {
+    static int i = 0;
+    if (i==0) {
+        [self.jianjieView mas_remakeConstraints:^(MASConstraintMaker *make) {
+                make.left.equalTo(self);
+                make.right.equalTo(self);
+                make.top.equalTo(self.mas_top).offset(160);
+                make.height.equalTo(@200);
+        }];
+        
+        [self.introLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(self.jianjieView).offset(15);
+            make.top.equalTo(_lbJianjieTitle.mas_bottom).offset(5);
+        }];
+        NSLog(@"%f",self.introLabel.frame.size.height);
+        
+        
+        i++;
+    }else if (i==1) {
+        [self.jianjieView mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(self);
+            make.right.equalTo(self);
+            make.top.equalTo(self).offset(160);
+            make.height.equalTo(@100);
+        }];
+        
+        [_introLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(_jianjieView).offset(15);
+            make.right.equalTo(_jianjieView).offset(-15);
+            make.height.equalTo(@45);
+            make.top.equalTo(_lbJianjieTitle.mas_bottom).offset(5);
+        }];
+        
+        NSLog(@"%f",self.introLabel.bounds.size.height);
+        
+        i--;
+    }
+    [self.delegate payLiveHeaderBtnClick];
 }
 
 #pragma mark - 懒加载
@@ -206,7 +266,7 @@
     if (!_jianjieView) {
         _jianjieView = [[UIView alloc] init];
         _jianjieView.userInteractionEnabled = YES;
-        _jianjieView.backgroundColor = [UIColor redColor];
+        _jianjieView.backgroundColor = [UIColor whiteColor];
     }
     
     return _jianjieView;
@@ -226,14 +286,15 @@
     if (!_introLabel) {
         _introLabel = [UILabel new];
     }
-    _introLabel.backgroundColor = [UIColor whiteColor];
     UIFont *font = [UIFont systemFontOfSize:14];
     _introLabel.font = font;
     _introLabel.lineBreakMode = NSLineBreakByTruncatingTail;
     _introLabel.numberOfLines = 0;
     _introLabel.textColor = [UIColor grayColor];
     _introLabel.font = [UIFont systemFontOfSize:17];
-    _introLabel.backgroundColor = [UIColor blueColor];
+    _introLabel.preferredMaxLayoutWidth = self.jianjieView.bounds.size.width-30;//宽度设置
+    [_introLabel setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
+    
     return _introLabel;
 }
 
@@ -348,33 +409,8 @@
     return _spuserModel;
 }
 
-
-
-- (void)moreInfo:(PayLiveController *)controller {
-    static int i = 0;
-    if (i==0) {
-        [self.jianjieView mas_remakeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(self);
-            make.right.equalTo(self);
-            make.bottom.equalTo(self.btnMore.mas_top);
-            make.height.equalTo(@200);
-        }];
-        i++;
-    }else if (i==1) {
-        [self.jianjieView mas_remakeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(self);
-            make.right.equalTo(self);
-            make.top.equalTo(self).offset(160);
-            make.height.equalTo(@100);
-        }];
-        i--;
-    }
-    [self.delegate payLiveHeaderBtnClick];
+- (void)layoutSubviews {
+    NSLog(@"%f--------------------",self.bounds.size.height);
 }
 
-
-
 @end
-
-
-

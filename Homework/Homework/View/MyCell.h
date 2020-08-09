@@ -11,8 +11,11 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface MyCell : UITableViewCell
-@property(strong, nonatomic) NSString *title;
+
+@property(copy, nonatomic) NSDictionary *dic;
+
 + (instancetype)cellWithTableview:(UITableView *)tableview;
+
 @end
 
 NS_ASSUME_NONNULL_END

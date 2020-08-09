@@ -31,15 +31,15 @@
 
 - (void)setCourseModel:(CourseModel *)courseModel {
     _courseModel = courseModel;
-    _lbTitle.text = self.courseModel.title;
-    self.lbTime.text = self.courseModel.durationTime;
-    self.lbState.text = (self.courseModel.state==1 ? @"完结" : @"未完结");
-    self.lbNumber.text = [NSString stringWithFormat:@"%ld",self.courseModel.courseNumber];
+    _titleLabel.text = self.courseModel.title;
+    self.timeLabel.text = self.courseModel.durationTime;
+    self.stateLabel.text = (self.courseModel.state==1 ? @"完结" : @"未完结");
+    self.numLabel.text = [NSString stringWithFormat:@"%ld",self.courseModel.courseNumber];
 }
 
 - (void)setupView {
-    [self.contentView addSubview:self.lbNumber];
-    [_lbNumber mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.contentView addSubview:self.numLabel];
+    [_numLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.contentView).with.offset(20);
         make.bottom.equalTo(self.contentView).with.offset(-20);
         make.width.equalTo(@30);
@@ -47,26 +47,26 @@
     }];
     
     
-    [self.contentView addSubview:self.lbTitle];
-    [_lbTitle mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.bottom.equalTo(_lbNumber);
-        make.left.equalTo(_lbNumber.mas_right).offset(2);
+    [self.contentView addSubview:self.titleLabel];
+    [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.bottom.equalTo(_numLabel);
+        make.left.equalTo(_numLabel.mas_right).offset(2);
         make.width.lessThanOrEqualTo(@270);
     }];
     
-    [self.contentView addSubview:self.lbState];
-    [_lbState mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.contentView addSubview:self.stateLabel];
+    [_stateLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.equalTo(@20);
-        make.centerY.equalTo(_lbTitle);
+        make.centerY.equalTo(_titleLabel);
         make.width.equalTo(@40);
-        make.left.equalTo(_lbTitle.mas_right).offset(5);
+        make.left.equalTo(_titleLabel.mas_right).offset(5);
     }];
     
-    [self.contentView addSubview:self.lbTime];
-    [_lbTime mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_lbTitle.mas_bottom);
+    [self.contentView addSubview:self.timeLabel];
+    [_timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(_titleLabel.mas_bottom);
         make.bottom.equalTo(self.contentView);
-        make.left.equalTo(_lbTitle);
+        make.left.equalTo(_titleLabel);
     }];
     
 }
@@ -81,43 +81,43 @@
 }
 
 #pragma mark - 懒加载
-- (UILabel *)lbNumber {
-    if (!_lbNumber) {
-        _lbNumber = [UILabel new];
-        _lbNumber.font = [UIFont systemFontOfSize:18 weight:UIFontWeightBold];
+- (UILabel *)numLabel {
+    if (!_numLabel) {
+        _numLabel = [UILabel new];
+        _numLabel.font = [UIFont systemFontOfSize:18 weight:UIFontWeightBold];
         
     }
-    return _lbNumber;
+    return _numLabel;
 }
 
-- (UILabel *)lbState {
-    if (!_lbState) {
-        _lbState = [UILabel new];
-        _lbState.backgroundColor = [UIColor grayColor];
-        _lbState.textColor = [UIColor whiteColor];
-        _lbState.font = [UIFont systemFontOfSize:10];
-        _lbState.layer.masksToBounds = YES;
-        _lbState.layer.cornerRadius = 3;
-        _lbState.textAlignment = NSTextAlignmentCenter;
+- (UILabel *)stateLabel {
+    if (!_stateLabel) {
+        _stateLabel = [UILabel new];
+        _stateLabel.backgroundColor = [UIColor grayColor];
+        _stateLabel.textColor = [UIColor whiteColor];
+        _stateLabel.font = [UIFont systemFontOfSize:10];
+        _stateLabel.layer.masksToBounds = YES;
+        _stateLabel.layer.cornerRadius = 3;
+        _stateLabel.textAlignment = NSTextAlignmentCenter;
         
     }
-    return _lbState;
+    return _stateLabel;
 }
 
-- (UILabel *)lbTime {
-    if (!_lbTime) {
-        _lbTime = [UILabel new];
-        _lbTime.textColor = [UIColor grayColor];
+- (UILabel *)timeLabel {
+    if (!_timeLabel) {
+        _timeLabel = [UILabel new];
+        _timeLabel.textColor = [UIColor grayColor];
     }
-    return _lbTime;
+    return _timeLabel;
 }
 
-- (UILabel *)lbTitle {
-    if (!_lbTitle) {
-        _lbTitle = [UILabel new];
-        _lbTitle.font = [UIFont systemFontOfSize:18 weight:UIFontWeightBold];
+- (UILabel *)titleLabel {
+    if (!_titleLabel) {
+        _titleLabel = [UILabel new];
+        _titleLabel.font = [UIFont systemFontOfSize:18 weight:UIFontWeightBold];
     }
-    return _lbTitle;
+    return _titleLabel;
 }
 
 

@@ -1,9 +1,5 @@
-/**
- * @功能描述：付费Live页面
- * @创建时间：2020-08-07
- * @创建人：祖文渝
- * @备注:
- */
+
+
 
 #import "PayLiveController.h"
 #import "CoureseCell.h"
@@ -13,7 +9,12 @@
 #import "UIImageView+WebCache.h"
 #import "PayLiveHeader.h"
 
-/// 付费Live页面
+/**
+* @功能描述：付费Live页面
+* @创建时间：2020-08-07
+* @创建人：祖文渝
+* @备注:
+*/
 @interface PayLiveController ()<
 PayLiveHeaderDelegate,
 UITableViewDelegate,
@@ -22,52 +23,48 @@ UITableViewDataSource
 
 ///存放课程模型的数组
 @property(nonatomic, strong) NSMutableArray<CourseModel *> *courseLists;
-
 /// live模型
 @property(nonatomic, strong) LiveModel *model;
-
 /// 课程tableView
 @property(nonatomic, strong) UITableView *tableView;
-
 /// 页面信息header
 @property(nonatomic, strong) PayLiveHeader *header;
-
 /// 底部View
 @property(nonatomic, strong)UIView *bottomView;
-
 /// 底部T币二字
 @property(nonatomic, strong) UILabel *TLabel;
-
 /// 购买按钮
 @property(nonatomic, strong) UIButton *buyButton;
-
 /// 导航栏更多按钮
 @property(nonatomic, strong) UIBarButtonItem *moreBarbuttonItem;
-
 /// 导航栏转发按钮
 @property(nonatomic, strong) UIBarButtonItem *repostButton;
-
 /// 底部价格Label
 @property(strong, nonatomic) UILabel *moneyLabel;
-
 /// 背景容器
 @property(nonatomic, strong) UIView *container;
-
 /// header背景
 @property(nonatomic, strong) UIView *bgView;
+
 @end
 
 @implementation PayLiveController
-
 #pragma mark - Life cycle
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //导航栏
-    [self setupNavbar];
     //页面布局
     [self setupView];
     //请求数据
     [self requestData];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    //导航栏
+    [self setupNavbar];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
 }
 
 #pragma mark - Action
@@ -82,6 +79,7 @@ UITableViewDataSource
     static int j = 0;
     if (j==0) {
         CGRect rect = CGRectMake(0, 0, self.view.bounds.size.width, 450);
+        
         self.header.frame = rect;
         [self.tableView setTableHeaderView:self.header];
         j++;
@@ -103,6 +101,7 @@ UITableViewDataSource
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor],NSFontAttributeName : [UIFont fontWithName:@"Helvetica-Bold" size:17]}];
     NSArray *arr = [NSArray arrayWithObjects:self.moreBarbuttonItem,self.repostButton, nil];
     self.navigationItem.rightBarButtonItems = arr;
+    [self.navigationController.navigationBar setBarStyle:UIBarStyleDefault];
 }
 
 /// 页面布局
@@ -136,6 +135,10 @@ UITableViewDataSource
     }];
 }
 
+- (void)numOfIntroLabelLine {
+    
+}
+
 
 #pragma mark - Delegate
 
@@ -167,9 +170,9 @@ UITableViewDataSource
     return cell;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 350;
-}
+//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+//    return 350;
+//}
 
 ///tableview滑动代理
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
@@ -179,7 +182,6 @@ UITableViewDataSource
 }
 
 #pragma mark - 数据请求
-/// 数据请求
 - (void)requestData {
     /**
      需求描述：
@@ -190,13 +192,13 @@ UITableViewDataSource
      self.tableview要reloadData。
      */
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    NSString *url = @"http://47.111.114.205:12800/api-resource/paylive/info?userID=81154&currentCourse=0&payLiveID=139&userKey=2kkU82OiHWbYyvDOq2pFEdBdCSnchy6F";
+    NSString *url = @"http://47.111.114.205:12800/api-resource/paylive/info?userID=81154&currentCourse=0&payLiveID=139&userKey=M3S23TG_Vc0qHyyUXKntZBl2q5zzHFnh";
     NSMutableDictionary *dic = [NSMutableDictionary new];
     //模拟post参数
-    [dic setObject:@(81154) forKey:@"userID"];
+    [dic setObject:@(80125) forKey:@"userID"];
     [dic setObject:@(0) forKey:@"currentCourse"];
     [dic setObject:@(139) forKey:@"payLiveID"];
-    [dic setObject:@"2kkU82OiHWbYyvDOq2pFEdBdCSnchy6F" forKey:@"userKey"];
+    [dic setObject:@"M3S23TG_Vc0qHyyUXKntZBl2q5zzHFnh" forKey:@"userKey"];
     //请求
     [manager POST:url parameters:dic headers:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         //成功回调
@@ -221,7 +223,6 @@ UITableViewDataSource
 }
 
 #pragma mark - Lazy
-
 /// 存放课程Model的课程数组
 - (NSMutableArray<CourseModel *> *)courseLists {
     if (!_courseLists) {
@@ -241,6 +242,7 @@ UITableViewDataSource
         _tableView.frame = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height-120);
         _tableView.estimatedRowHeight = 0;
         _tableView.estimatedSectionFooterHeight = 0;
+        _tableView.estimatedSectionHeaderHeight = 0;
     }
     return _tableView;
 }
@@ -329,6 +331,7 @@ UITableViewDataSource
 }
 
 @end
+
 
 
 

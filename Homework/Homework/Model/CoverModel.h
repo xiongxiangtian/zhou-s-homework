@@ -11,9 +11,9 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface CoverModel : JSONModel
-
 /// 封面头像url
 @property (strong, nonatomic) NSString *url;
+
 @end
 
 NS_ASSUME_NONNULL_END

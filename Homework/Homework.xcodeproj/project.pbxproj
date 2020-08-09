@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		005127D424DFFEA600C010D0 /* XHSController.m in Sources */ = {isa = PBXBuildFile; fileRef = 005127D324DFFEA600C010D0 /* XHSController.m */; };
+		005127D824E00F0300C010D0 /* XHSTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 005127D724E00F0300C010D0 /* XHSTableViewCell.m */; };
 		00741C5B24DA4B9300F857CF /* LiveModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 00741C5A24DA4B9300F857CF /* LiveModel.m */; };
 		00741C6124DA4E8A00F857CF /* SPUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 00741C6024DA4E8A00F857CF /* SPUser.m */; };
 		00741C6724DA509C00F857CF /* CourseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 00741C6624DA509C00F857CF /* CourseModel.m */; };
@@ -53,6 +55,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		005127D224DFFEA600C010D0 /* XHSController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHSController.h; sourceTree = "<group>"; };
+		005127D324DFFEA600C010D0 /* XHSController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHSController.m; sourceTree = "<group>"; };
+		005127D624E00F0300C010D0 /* XHSTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHSTableViewCell.h; sourceTree = "<group>"; };
+		005127D724E00F0300C010D0 /* XHSTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHSTableViewCell.m; sourceTree = "<group>"; };
 		00741C5924DA4B9300F857CF /* LiveModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LiveModel.h; sourceTree = "<group>"; };
 		00741C5A24DA4B9300F857CF /* LiveModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LiveModel.m; sourceTree = "<group>"; };
 		00741C5F24DA4E8A00F857CF /* SPUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPUser.h; sourceTree = "<group>"; };
@@ -152,6 +158,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		005127D024DFFA7E00C010D0 /* 专辑页 */ = {
+			isa = PBXGroup;
+			children = (
+				00D8748124D8415500FA5AEF /* PayLiveController.h */,
+				00D8748224D8415500FA5AEF /* PayLiveController.m */,
+			);
+			path = "专辑页";
+			sourceTree = "<group>";
+		};
+		005127D124DFFAA100C010D0 /* 小红书 */ = {
+			isa = PBXGroup;
+			children = (
+				005127D224DFFEA600C010D0 /* XHSController.h */,
+				005127D324DFFEA600C010D0 /* XHSController.m */,
+			);
+			path = "小红书";
+			sourceTree = "<group>";
+		};
+		005127D524E00ED600C010D0 /* 小红书Cell */ = {
+			isa = PBXGroup;
+			children = (
+				005127D624E00F0300C010D0 /* XHSTableViewCell.h */,
+				005127D724E00F0300C010D0 /* XHSTableViewCell.m */,
+			);
+			path = "小红书Cell";
+			sourceTree = "<group>";
+		};
 		00741C5824DA4B6E00F857CF /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -240,10 +273,13 @@
 		00741CCA24DBB57900F857CF /* View */ = {
 			isa = PBXGroup;
 			children = (
+				005127D524E00ED600C010D0 /* 小红书Cell */,
 				00D8747E24D83B3A00FA5AEF /* CoureseCell.h */,
 				00D8747F24D83B3A00FA5AEF /* CoureseCell.m */,
 				00D8748924D8F3C100FA5AEF /* PayLiveHeader.h */,
 				00D8748724D8F3BA00FA5AEF /* PayLiveHeader.m */,
+				00CF515224DC39040092F229 /* MyCell.h */,
+				00CF515324DC39040092F229 /* MyCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -253,12 +289,10 @@
 			children = (
 				00D8746B24D8299F00FA5AEF /* ViewController.h */,
 				00D8746C24D8299F00FA5AEF /* ViewController.m */,
-				00D8748124D8415500FA5AEF /* PayLiveController.h */,
-				00D8748224D8415500FA5AEF /* PayLiveController.m */,
 				00741CC724DAD77600F857CF /* MyNavigationController.h */,
 				00741CC824DAD77600F857CF /* MyNavigationController.m */,
-				00CF515224DC39040092F229 /* MyCell.h */,
-				00CF515324DC39040092F229 /* MyCell.m */,
+				005127D024DFFA7E00C010D0 /* 专辑页 */,
+				005127D124DFFAA100C010D0 /* 小红书 */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -441,6 +475,7 @@
 				00741C5B24DA4B9300F857CF /* LiveModel.m in Sources */,
 				00741CAD24DAA00D00F857CF /* SDWebImageManager.m in Sources */,
 				00741CBA24DAA00D00F857CF /* SDAnimatedImageRep.m in Sources */,
+				005127D824E00F0300C010D0 /* XHSTableViewCell.m in Sources */,
 				00741CBE24DAA00D00F857CF /* NSData+ImageContentType.m in Sources */,
 				00741CBB24DAA00D00F857CF /* SDImageCache.m in Sources */,
 				00D8746724D8299F00FA5AEF /* AppDelegate.m in Sources */,
@@ -450,6 +485,7 @@
 				00741CC024DAA00D00F857CF /* NSImage+WebCache.m in Sources */,
 				00741CBF24DAA00D00F857CF /* UIImageView+WebCache.m in Sources */,
 				00741CC324DAA00D00F857CF /* UIView+WebCacheOperation.m in Sources */,
+				005127D424DFFEA600C010D0 /* XHSController.m in Sources */,
 				00D8748024D83B3A00FA5AEF /* CoureseCell.m in Sources */,
 				00741CBD24DAA00D00F857CF /* SDWebImageTransition.m in Sources */,
 				00741CB224DAA00D00F857CF /* SDWebImageDownloader.m in Sources */,

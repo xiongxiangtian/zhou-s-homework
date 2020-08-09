@@ -9,14 +9,24 @@
 #import <UIKit/UIKit.h>
 #import "CourseModel.h"
 
+
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface CoureseCell : UITableViewCell
+/// 课程模型
 @property(strong, nonatomic)CourseModel *courseModel;
-@property(strong, nonatomic)UILabel *lbNumber;
-@property(strong, nonatomic)UILabel *lbTitle;
-@property(strong, nonatomic)UILabel *lbState;
-@property(strong, nonatomic)UILabel *lbTime;
+/// cell序号
+@property(strong, nonatomic)UILabel *numLabel;
+/// 课程名称
+@property(strong, nonatomic)UILabel *titleLabel;
+/// 课程状态
+@property(strong, nonatomic)UILabel *stateLabel;
+/// 课程开始结束时间
+@property(strong, nonatomic)UILabel *timeLabel;
+
+/// 注册初始化cell
+/// @param tableview cell所在的Tableview
 + (instancetype)cellWithTableview:(UITableView *)tableview;
 
 @end
