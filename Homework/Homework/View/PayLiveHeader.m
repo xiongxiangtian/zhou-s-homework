@@ -25,7 +25,7 @@
 @property(strong, nonatomic) UILabel *lbState;
 @property(strong, nonatomic) UIView *jianjieView;//简介
 @property(strong, nonatomic) UILabel *lbJianjieTitle;
-@property(strong, nonatomic) UILabel *lbJIanjie;
+@property(strong, nonatomic) UILabel *introLabel;
 @property(strong, nonatomic) UIButton *btnMore;//下拉按钮
 @property(strong, nonatomic) UIView *userView;//用户卡片
 @property(strong, nonatomic) UILabel *username;//用户名
@@ -57,7 +57,7 @@
     [self addSubview:self.lbKeshi];
     [self addSubview:self.jianjieView];
     [self.jianjieView addSubview:self.lbJianjieTitle];
-    [self.jianjieView addSubview:self.lbJIanjie];
+    [self.jianjieView addSubview:self.introLabel];
     [self.userView addSubview:self.avtar];
     [self.userView addSubview:self.username];
     [self.userView addSubview:self.lbSchool];
@@ -109,7 +109,7 @@
         make.width.equalTo(@40);
         make.height.equalTo(@20);
     }];
-    [_lbJIanjie mas_makeConstraints:^(MASConstraintMaker *make) {
+    [_introLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_jianjieView).offset(15);
         make.right.equalTo(_jianjieView).offset(-15);
         make.height.equalTo(@45);
@@ -157,7 +157,7 @@
     self.avtarUrl = self.spuserModel.avatar;
     [self.avtar sd_setImageWithURL:self.avtarUrl placeholderImage:[UIImage imageNamed:@"123"]];
     self.lbSchool.text = self.spuserModel.categoryAlias;
-    self.lbJIanjie.text = self.liveModel.info_description;
+    self.introLabel.text = self.liveModel.info_description;
 }
 
 #pragma mark - 懒加载
@@ -206,7 +206,7 @@
     if (!_jianjieView) {
         _jianjieView = [[UIView alloc] init];
         _jianjieView.userInteractionEnabled = YES;
-        _jianjieView.backgroundColor = [UIColor whiteColor];
+        _jianjieView.backgroundColor = [UIColor redColor];
     }
     
     return _jianjieView;
@@ -222,18 +222,19 @@
     return _lbJianjieTitle;
 }
 
-- (UILabel *)lbJIanjie {
-    if (!_lbJIanjie) {
-        _lbJIanjie = [UILabel new];
+- (UILabel *)introLabel {
+    if (!_introLabel) {
+        _introLabel = [UILabel new];
     }
-    _lbJIanjie.backgroundColor = [UIColor whiteColor];
+    _introLabel.backgroundColor = [UIColor whiteColor];
     UIFont *font = [UIFont systemFontOfSize:14];
-    _lbJIanjie.font = font;
-    _lbJIanjie.lineBreakMode = NSLineBreakByTruncatingTail;
-    _lbJIanjie.numberOfLines = 2;
-    _lbJIanjie.textColor = [UIColor grayColor];
-    _lbJIanjie.font = [UIFont systemFontOfSize:17];
-    return _lbJIanjie;
+    _introLabel.font = font;
+    _introLabel.lineBreakMode = NSLineBreakByTruncatingTail;
+    _introLabel.numberOfLines = 0;
+    _introLabel.textColor = [UIColor grayColor];
+    _introLabel.font = [UIFont systemFontOfSize:17];
+    _introLabel.backgroundColor = [UIColor blueColor];
+    return _introLabel;
 }
 
 - (UIButton *)btnMore {
