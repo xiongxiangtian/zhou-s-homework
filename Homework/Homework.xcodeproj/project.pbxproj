@@ -7,8 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0014BB8324E0336100C01961 /* EntriesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0014BB8224E0336100C01961 /* EntriesModel.m */; };
+		0014BB8624E033C100C01961 /* Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 0014BB8524E033C100C01961 /* Category.m */; };
+		0014BB8924E048CB00C01961 /* DetialGood.m in Sources */ = {isa = PBXBuildFile; fileRef = 0014BB8824E048CB00C01961 /* DetialGood.m */; };
 		005127D424DFFEA600C010D0 /* XHSController.m in Sources */ = {isa = PBXBuildFile; fileRef = 005127D324DFFEA600C010D0 /* XHSController.m */; };
 		005127D824E00F0300C010D0 /* XHSTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 005127D724E00F0300C010D0 /* XHSTableViewCell.m */; };
+		005127DB24E018E200C010D0 /* XHSCollectionVIewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 005127DA24E018E200C010D0 /* XHSCollectionVIewCell.m */; };
 		00741C5B24DA4B9300F857CF /* LiveModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 00741C5A24DA4B9300F857CF /* LiveModel.m */; };
 		00741C6124DA4E8A00F857CF /* SPUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 00741C6024DA4E8A00F857CF /* SPUser.m */; };
 		00741C6724DA509C00F857CF /* CourseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 00741C6624DA509C00F857CF /* CourseModel.m */; };
@@ -55,10 +59,19 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0014BB8124E0336100C01961 /* EntriesModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EntriesModel.h; sourceTree = "<group>"; };
+		0014BB8224E0336100C01961 /* EntriesModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EntriesModel.m; sourceTree = "<group>"; };
+		0014BB8424E033C100C01961 /* Category.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Category.h; sourceTree = "<group>"; };
+		0014BB8524E033C100C01961 /* Category.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Category.m; sourceTree = "<group>"; };
+		0014BB8724E048CB00C01961 /* DetialGood.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetialGood.h; sourceTree = "<group>"; };
+		0014BB8824E048CB00C01961 /* DetialGood.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetialGood.m; sourceTree = "<group>"; };
 		005127D224DFFEA600C010D0 /* XHSController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHSController.h; sourceTree = "<group>"; };
 		005127D324DFFEA600C010D0 /* XHSController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHSController.m; sourceTree = "<group>"; };
 		005127D624E00F0300C010D0 /* XHSTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHSTableViewCell.h; sourceTree = "<group>"; };
 		005127D724E00F0300C010D0 /* XHSTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHSTableViewCell.m; sourceTree = "<group>"; };
+		005127D924E018E200C010D0 /* XHSCollectionVIewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHSCollectionVIewCell.h; sourceTree = "<group>"; };
+		005127DA24E018E200C010D0 /* XHSCollectionVIewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHSCollectionVIewCell.m; sourceTree = "<group>"; };
+		005127DC24E02C9E00C010D0 /* ovo.geojson */ = {isa = PBXFileReference; lastKnownFileType = text; path = ovo.geojson; sourceTree = "<group>"; };
 		00741C5924DA4B9300F857CF /* LiveModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LiveModel.h; sourceTree = "<group>"; };
 		00741C5A24DA4B9300F857CF /* LiveModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LiveModel.m; sourceTree = "<group>"; };
 		00741C5F24DA4E8A00F857CF /* SPUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPUser.h; sourceTree = "<group>"; };
@@ -158,6 +171,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0014BB8024E0334300C01961 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0014BB8124E0336100C01961 /* EntriesModel.h */,
+				0014BB8224E0336100C01961 /* EntriesModel.m */,
+				0014BB8424E033C100C01961 /* Category.h */,
+				0014BB8524E033C100C01961 /* Category.m */,
+				0014BB8724E048CB00C01961 /* DetialGood.h */,
+				0014BB8824E048CB00C01961 /* DetialGood.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		005127D024DFFA7E00C010D0 /* 专辑页 */ = {
 			isa = PBXGroup;
 			children = (
@@ -167,22 +193,34 @@
 			path = "专辑页";
 			sourceTree = "<group>";
 		};
-		005127D124DFFAA100C010D0 /* 小红书 */ = {
+		005127D124DFFAA100C010D0 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				005127D224DFFEA600C010D0 /* XHSController.h */,
 				005127D324DFFEA600C010D0 /* XHSController.m */,
 			);
-			path = "小红书";
+			path = Controller;
 			sourceTree = "<group>";
 		};
-		005127D524E00ED600C010D0 /* 小红书Cell */ = {
+		005127D524E00ED600C010D0 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				005127D624E00F0300C010D0 /* XHSTableViewCell.h */,
 				005127D724E00F0300C010D0 /* XHSTableViewCell.m */,
+				005127D924E018E200C010D0 /* XHSCollectionVIewCell.h */,
+				005127DA24E018E200C010D0 /* XHSCollectionVIewCell.m */,
 			);
-			path = "小红书Cell";
+			path = View;
+			sourceTree = "<group>";
+		};
+		005127DD24E02EEB00C010D0 /* RedBook */ = {
+			isa = PBXGroup;
+			children = (
+				0014BB8024E0334300C01961 /* Model */,
+				005127D524E00ED600C010D0 /* View */,
+				005127D124DFFAA100C010D0 /* Controller */,
+			);
+			path = RedBook;
 			sourceTree = "<group>";
 		};
 		00741C5824DA4B6E00F857CF /* Model */ = {
@@ -273,7 +311,6 @@
 		00741CCA24DBB57900F857CF /* View */ = {
 			isa = PBXGroup;
 			children = (
-				005127D524E00ED600C010D0 /* 小红书Cell */,
 				00D8747E24D83B3A00FA5AEF /* CoureseCell.h */,
 				00D8747F24D83B3A00FA5AEF /* CoureseCell.m */,
 				00D8748924D8F3C100FA5AEF /* PayLiveHeader.h */,
@@ -292,7 +329,6 @@
 				00741CC724DAD77600F857CF /* MyNavigationController.h */,
 				00741CC824DAD77600F857CF /* MyNavigationController.m */,
 				005127D024DFFA7E00C010D0 /* 专辑页 */,
-				005127D124DFFAA100C010D0 /* 小红书 */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -318,16 +354,18 @@
 		00D8746424D8299F00FA5AEF /* Homework */ = {
 			isa = PBXGroup;
 			children = (
-				00741C7224DAA00C00F857CF /* SDWebImage */,
+				005127DD24E02EEB00C010D0 /* RedBook */,
 				00741CCA24DBB57900F857CF /* View */,
 				00741CCB24DBB5BC00F857CF /* Controller */,
 				00741C5824DA4B6E00F857CF /* Model */,
+				00741C7224DAA00C00F857CF /* SDWebImage */,
 				00D8746524D8299F00FA5AEF /* AppDelegate.h */,
 				00D8746624D8299F00FA5AEF /* AppDelegate.m */,
 				00D8747124D829A300FA5AEF /* Assets.xcassets */,
 				00D8747324D829A300FA5AEF /* LaunchScreen.storyboard */,
 				00D8747624D829A300FA5AEF /* Info.plist */,
 				00D8747724D829A300FA5AEF /* main.m */,
+				005127DC24E02C9E00C010D0 /* ovo.geojson */,
 			);
 			path = Homework;
 			sourceTree = "<group>";
@@ -483,6 +521,7 @@
 				00741CC924DAD77600F857CF /* MyNavigationController.m in Sources */,
 				00741CB824DAA00D00F857CF /* SDWebImageCoder.m in Sources */,
 				00741CC024DAA00D00F857CF /* NSImage+WebCache.m in Sources */,
+				0014BB8924E048CB00C01961 /* DetialGood.m in Sources */,
 				00741CBF24DAA00D00F857CF /* UIImageView+WebCache.m in Sources */,
 				00741CC324DAA00D00F857CF /* UIView+WebCacheOperation.m in Sources */,
 				005127D424DFFEA600C010D0 /* XHSController.m in Sources */,
@@ -497,13 +536,16 @@
 				00741CC524DAA00D00F857CF /* SDWebImageImageIOCoder.m in Sources */,
 				00741CB524DAA00D00F857CF /* SDWebImageCoderHelper.m in Sources */,
 				00D8747824D829A300FA5AEF /* main.m in Sources */,
+				0014BB8624E033C100C01961 /* Category.m in Sources */,
 				00741CC624DAA00D00F857CF /* UIButton+WebCache.m in Sources */,
 				00CF515424DC39040092F229 /* MyCell.m in Sources */,
 				00741CC124DAA00D00F857CF /* SDWebImageGIFCoder.m in Sources */,
+				0014BB8324E0336100C01961 /* EntriesModel.m in Sources */,
 				00741CAE24DAA00D00F857CF /* UIImageView+HighlightedWebCache.m in Sources */,
 				00741CB324DAA00D00F857CF /* UIImage+GIF.m in Sources */,
 				00D8748824D8F3BB00FA5AEF /* PayLiveHeader.m in Sources */,
 				00741CB024DAA00D00F857CF /* UIImage+ForceDecode.m in Sources */,
+				005127DB24E018E200C010D0 /* XHSCollectionVIewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

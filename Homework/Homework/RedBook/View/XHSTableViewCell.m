@@ -8,6 +8,12 @@
 
 #import "XHSTableViewCell.h"
 
+@interface XHSTableViewCell ()
+
+@property (nonatomic, strong) UILabel *titleLabel;
+
+@end
+
 @implementation XHSTableViewCell
 
 + (instancetype)cellWithTableview:(UITableView *)tableView {
@@ -29,7 +35,23 @@
 }
 
 - (void)setupView {
-    
+    [self addSubview:self.titleLabel];
+}
+
+
+- (void)setCategory:(Category *)category {
+    _category = category;
+    self.titleLabel.text = _category.name;
+}
+
+
+- (UILabel *)titleLabel {
+    if (!_titleLabel) {
+        _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height)];
+        _titleLabel.textAlignment = NSTextAlignmentLeft;
+        _titleLabel.backgroundColor = [UIColor whiteColor];
+    }
+    return _titleLabel;
 }
 
 @end

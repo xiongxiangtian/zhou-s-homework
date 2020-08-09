@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "Category.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface XHSTableViewCell : UITableViewCell
+
+@property (nonatomic, strong) Category *category;
 
 + (instancetype)cellWithTableview:(UITableView *)tableView;
 
