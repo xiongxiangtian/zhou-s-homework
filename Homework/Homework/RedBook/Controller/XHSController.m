@@ -83,7 +83,6 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"%d",indexPath.row);
     self.dataArr = self.collectionDataArr[indexPath.row];
     [self.collectioView reloadData];
 }
@@ -115,6 +114,13 @@
         return CGSizeMake(self.collectioView.bounds.size.width, 40);
     }else {
         return CGSizeMake((self.collectioView.bounds.size.width)/3-1, 110);
+    }
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    if ([self.dataArr[indexPath.row] class]== [Detail class]) {
+        Detail *detail =  self.dataArr[indexPath.row];
+        NSLog(@"%@", detail.name);
     }
 }
 
