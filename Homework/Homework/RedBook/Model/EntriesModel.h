@@ -12,7 +12,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface EntriesModel : JSONModel
-
+/// 种类模型
 @property (nonatomic, strong) NSArray<Category *> *categorys;
 
 @end

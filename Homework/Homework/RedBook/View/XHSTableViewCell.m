@@ -9,17 +9,15 @@
 #import "XHSTableViewCell.h"
 
 @interface XHSTableViewCell ()
-
+/// 左侧Tableview标题
 @property (nonatomic, strong) UILabel *titleLabel;
 
 @end
 
 @implementation XHSTableViewCell
-
 + (instancetype)cellWithTableview:(UITableView *)tableView {
     static NSString *XTCELL = @"xiaohongshutableviewcell";
     XHSTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:XTCELL];
-    
     if (!cell) {
         cell = [[XHSTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:XTCELL];
     }
@@ -38,18 +36,16 @@
     [self addSubview:self.titleLabel];
 }
 
-
 - (void)setCategory:(Category *)category {
     _category = category;
     self.titleLabel.text = _category.name;
 }
 
-
 - (UILabel *)titleLabel {
     if (!_titleLabel) {
-        _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height)];
+        _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, self.bounds.size.width, 30)];
         _titleLabel.textAlignment = NSTextAlignmentLeft;
-        _titleLabel.backgroundColor = [UIColor whiteColor];
+        _titleLabel.font = [UIFont systemFontOfSize:13];
     }
     return _titleLabel;
 }

@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface Category : JSONModel
-
+/// 分类大标题
 @property (nonatomic, strong) NSString *name;
 
 @end

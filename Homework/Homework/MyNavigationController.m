@@ -20,7 +20,7 @@
 
 - (BOOL)navigationBar:(UINavigationBar *)navigationBar shouldPushItem:(UINavigationItem *)item {
     UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
-    [backItem setTintColor:[UIColor whiteColor]];
+    [backItem setTintColor:[UIColor blackColor]];
     item.backBarButtonItem = backItem;
     return YES;
 }

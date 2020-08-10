@@ -10,6 +10,7 @@
 		0014BB8324E0336100C01961 /* EntriesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0014BB8224E0336100C01961 /* EntriesModel.m */; };
 		0014BB8624E033C100C01961 /* Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 0014BB8524E033C100C01961 /* Category.m */; };
 		0014BB8924E048CB00C01961 /* DetialGood.m in Sources */ = {isa = PBXBuildFile; fileRef = 0014BB8824E048CB00C01961 /* DetialGood.m */; };
+		0014BB8C24E0E29100C01961 /* XHSCollectionTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0014BB8B24E0E29100C01961 /* XHSCollectionTitleCell.m */; };
 		005127D424DFFEA600C010D0 /* XHSController.m in Sources */ = {isa = PBXBuildFile; fileRef = 005127D324DFFEA600C010D0 /* XHSController.m */; };
 		005127D824E00F0300C010D0 /* XHSTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 005127D724E00F0300C010D0 /* XHSTableViewCell.m */; };
 		005127DB24E018E200C010D0 /* XHSCollectionVIewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 005127DA24E018E200C010D0 /* XHSCollectionVIewCell.m */; };
@@ -65,13 +66,14 @@
 		0014BB8524E033C100C01961 /* Category.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Category.m; sourceTree = "<group>"; };
 		0014BB8724E048CB00C01961 /* DetialGood.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetialGood.h; sourceTree = "<group>"; };
 		0014BB8824E048CB00C01961 /* DetialGood.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetialGood.m; sourceTree = "<group>"; };
+		0014BB8A24E0E29100C01961 /* XHSCollectionTitleCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHSCollectionTitleCell.h; sourceTree = "<group>"; };
+		0014BB8B24E0E29100C01961 /* XHSCollectionTitleCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHSCollectionTitleCell.m; sourceTree = "<group>"; };
 		005127D224DFFEA600C010D0 /* XHSController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHSController.h; sourceTree = "<group>"; };
 		005127D324DFFEA600C010D0 /* XHSController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHSController.m; sourceTree = "<group>"; };
 		005127D624E00F0300C010D0 /* XHSTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHSTableViewCell.h; sourceTree = "<group>"; };
 		005127D724E00F0300C010D0 /* XHSTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHSTableViewCell.m; sourceTree = "<group>"; };
 		005127D924E018E200C010D0 /* XHSCollectionVIewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHSCollectionVIewCell.h; sourceTree = "<group>"; };
 		005127DA24E018E200C010D0 /* XHSCollectionVIewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHSCollectionVIewCell.m; sourceTree = "<group>"; };
-		005127DC24E02C9E00C010D0 /* ovo.geojson */ = {isa = PBXFileReference; lastKnownFileType = text; path = ovo.geojson; sourceTree = "<group>"; };
 		00741C5924DA4B9300F857CF /* LiveModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LiveModel.h; sourceTree = "<group>"; };
 		00741C5A24DA4B9300F857CF /* LiveModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LiveModel.m; sourceTree = "<group>"; };
 		00741C5F24DA4E8A00F857CF /* SPUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPUser.h; sourceTree = "<group>"; };
@@ -184,6 +186,16 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		0014BB9124E133BE00C01961 /* PayLive */ = {
+			isa = PBXGroup;
+			children = (
+				00741CCA24DBB57900F857CF /* View */,
+				00741CCB24DBB5BC00F857CF /* Controller */,
+				00741C5824DA4B6E00F857CF /* Model */,
+			);
+			path = PayLive;
+			sourceTree = "<group>";
+		};
 		005127D024DFFA7E00C010D0 /* 专辑页 */ = {
 			isa = PBXGroup;
 			children = (
@@ -209,6 +221,8 @@
 				005127D724E00F0300C010D0 /* XHSTableViewCell.m */,
 				005127D924E018E200C010D0 /* XHSCollectionVIewCell.h */,
 				005127DA24E018E200C010D0 /* XHSCollectionVIewCell.m */,
+				0014BB8A24E0E29100C01961 /* XHSCollectionTitleCell.h */,
+				0014BB8B24E0E29100C01961 /* XHSCollectionTitleCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -324,10 +338,6 @@
 		00741CCB24DBB5BC00F857CF /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				00D8746B24D8299F00FA5AEF /* ViewController.h */,
-				00D8746C24D8299F00FA5AEF /* ViewController.m */,
-				00741CC724DAD77600F857CF /* MyNavigationController.h */,
-				00741CC824DAD77600F857CF /* MyNavigationController.m */,
 				005127D024DFFA7E00C010D0 /* 专辑页 */,
 			);
 			path = Controller;
@@ -354,18 +364,19 @@
 		00D8746424D8299F00FA5AEF /* Homework */ = {
 			isa = PBXGroup;
 			children = (
+				00D8746B24D8299F00FA5AEF /* ViewController.h */,
+				00D8746C24D8299F00FA5AEF /* ViewController.m */,
+				00741CC724DAD77600F857CF /* MyNavigationController.h */,
+				00741CC824DAD77600F857CF /* MyNavigationController.m */,
 				005127DD24E02EEB00C010D0 /* RedBook */,
-				00741CCA24DBB57900F857CF /* View */,
-				00741CCB24DBB5BC00F857CF /* Controller */,
-				00741C5824DA4B6E00F857CF /* Model */,
-				00741C7224DAA00C00F857CF /* SDWebImage */,
+				0014BB9124E133BE00C01961 /* PayLive */,
 				00D8746524D8299F00FA5AEF /* AppDelegate.h */,
 				00D8746624D8299F00FA5AEF /* AppDelegate.m */,
 				00D8747124D829A300FA5AEF /* Assets.xcassets */,
 				00D8747324D829A300FA5AEF /* LaunchScreen.storyboard */,
 				00D8747624D829A300FA5AEF /* Info.plist */,
 				00D8747724D829A300FA5AEF /* main.m */,
-				005127DC24E02C9E00C010D0 /* ovo.geojson */,
+				00741C7224DAA00C00F857CF /* SDWebImage */,
 			);
 			path = Homework;
 			sourceTree = "<group>";
@@ -530,6 +541,7 @@
 				00741CB224DAA00D00F857CF /* SDWebImageDownloader.m in Sources */,
 				00741CB624DAA00D00F857CF /* SDWebImageCompat.m in Sources */,
 				00741C6124DA4E8A00F857CF /* SPUser.m in Sources */,
+				0014BB8C24E0E29100C01961 /* XHSCollectionTitleCell.m in Sources */,
 				00741CB424DAA00D00F857CF /* UIImage+MultiFormat.m in Sources */,
 				00741CBC24DAA00D00F857CF /* SDWebImageDownloaderOperation.m in Sources */,
 				00741CB724DAA00D00F857CF /* SDWebImagePrefetcher.m in Sources */,

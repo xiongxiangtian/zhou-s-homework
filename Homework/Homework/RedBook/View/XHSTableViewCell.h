@@ -11,9 +11,9 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface XHSTableViewCell : UITableViewCell
-
 @property (nonatomic, strong) Category *category;
-
+/// 初始化cell
+/// @param tableView cell所属tableView
 + (instancetype)cellWithTableview:(UITableView *)tableView;
 
 @end

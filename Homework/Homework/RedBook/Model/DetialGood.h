@@ -11,8 +11,9 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface DetialGood : JSONModel
-
+/// 详细分类标题
 @property (nonatomic, strong) NSString *name;
+/// 详细分类图片
 @property (nonatomic, strong) NSString *image;
 
 @end
