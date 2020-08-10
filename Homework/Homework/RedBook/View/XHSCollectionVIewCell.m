@@ -26,10 +26,10 @@
     return self;
 }
 
-- (void)setDetailGood:(DetialGood *)detailGood {
-     _detailGood = detailGood;
-    self.titleLabel.text = _detailGood.name;
-    NSURL *goodImgViewUrl = [NSURL URLWithString:_detailGood.image];
+- (void)setDetail:(Detail *)detail {
+    _detail = detail;
+    self.titleLabel.text = _detail.name;
+    NSURL *goodImgViewUrl = [NSURL URLWithString:_detail.image];
     [self.goodImgView sd_setImageWithURL:goodImgViewUrl placeholderImage: [UIImage imageNamed:@"123"]];
 }
 

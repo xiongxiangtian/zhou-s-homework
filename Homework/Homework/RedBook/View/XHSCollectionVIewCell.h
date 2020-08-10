@@ -7,13 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "DetialGood.h"
+#import "Detail.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface XHSCollectionVIewCell : UICollectionViewCell
 /// 商品模型
-@property (nonatomic, strong) DetialGood *detailGood;
+@property (nonatomic, strong) Detail *detail;
+
+@property (nonatomic, strong) NSArray *detailArr;
 
 @end
 

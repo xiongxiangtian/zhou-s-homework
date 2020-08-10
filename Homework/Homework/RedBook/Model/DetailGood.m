@@ -6,8 +6,8 @@
 //  Copyright © 2020 夕厚大魔王. All rights reserved.
 //
 
-#import "DetialGood.h"
+#import "DetailGood.h"
 
-@implementation DetialGood
+@implementation DetailGood
 
 @end

@@ -12,7 +12,7 @@
 #import "XHSCollectionVIewCell.h"
 #import <AFNetworking/AFNetworking.h>
 #import "EntriesModel.h"
-#import "DetialGood.h"
+#import "DetailGood.h"
 #import <UICollectionViewLeftAlignedLayout/UICollectionViewLeftAlignedLayout.h>
 
 /**
@@ -30,9 +30,17 @@
 /// 右侧商品
 @property (nonatomic, strong) UICollectionView *collectioView;
 /// 数据
-@property (nonatomic, copy) NSArray *tableDataArr;
-@property (nonatomic, copy) NSArray *collectionArr;
+@property (nonatomic, copy) NSArray<Categories *> *tableDataArr;
+@property (nonatomic, copy) NSMutableArray *collectionArr;
+@property (nonatomic, strong) NSMutableArray *categoriesArr;
+
+@property (nonatomic, strong) EntriesModel *model;
+
+@property (nonatomic, strong) Categories *categoriesModel;
+
 @property (nonatomic, strong) NSMutableArray *collectionDataArr;
+
+@property (nonatomic ,strong) NSMutableArray *dataArr;
 
 @end
 
@@ -45,7 +53,6 @@
     [self requestDate];
     [self setupView];
     [self setupNvbar];
-    
 }
 
 #pragma mark - Custom Function
@@ -67,8 +74,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     XHSTableViewCell *cell =  [XHSTableViewCell cellWithTableview:tableView];
-    NSDictionary *categoryDic = self.tableDataArr[indexPath.row];
-    cell.category = [[Category alloc] initWithDictionary:categoryDic error:nil];
+    cell.categories = self.collectionArr[indexPath.row];
     return cell;
 }
 
@@ -77,44 +83,35 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self.collectionDataArr removeAllObjects];
-    self.collectionArr = [self.tableDataArr[indexPath.row] objectForKey:@"entries"];
-    for (NSInteger i = 0; i<=self.collectionArr.count-1; i++) {
-        [self.collectionDataArr addObject:[self.collectionArr[i] objectForKey:@"name"]];
-        NSDictionary *dics = [self.collectionArr[i] objectForKey:@"entries"];
-        for(NSDictionary *dic in dics) {
-            DetialGood *detailgood = [[DetialGood alloc] initWithDictionary:dic error:nil];
-            [self.collectionDataArr addObject:detailgood];
-        }
-    }
+    NSLog(@"%d",indexPath.row);
+    self.dataArr = self.collectionDataArr[indexPath.row];
     [self.collectioView reloadData];
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.collectionDataArr.count;
+    return self.categoriesArr.count;
 }
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *XHSCCELL = @"XHSCCELL";
     static NSString *XHSCTITLECELL = @"XHSCTITLECELL";
-    if (self.collectionDataArr.count>0) {
-        if ([self.collectionDataArr[indexPath.item] class] != [DetialGood class]) {
+    if (self.dataArr.count>0) {
+        if([self.dataArr[indexPath.item] class] != [Detail class]) {
             XHSCollectionTitleCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:XHSCTITLECELL forIndexPath:indexPath];
-            cell.model = self.collectionDataArr[indexPath.item];
-            if (indexPath.item == 0) {
+            cell.model = self.dataArr[indexPath.row];
+            if (self.dataArr[0]) {
                 cell.divider.hidden = YES;
             }
             return cell;
         }
     }
     XHSCollectionVIewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:XHSCCELL forIndexPath:indexPath];
-    cell.backgroundColor = [UIColor grayColor];
-    cell.detailGood = self.collectionDataArr[indexPath.item];
+    cell.detail = self.dataArr[indexPath.row];
     return cell;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    if ([self.collectionDataArr[indexPath.item] class] != [DetialGood class]) {
+    if ([self.dataArr[indexPath.item] class] != [Detail class]) {
         return CGSizeMake(self.collectioView.bounds.size.width, 40);
     }else {
         return CGSizeMake((self.collectioView.bounds.size.width)/3-1, 110);
@@ -129,17 +126,31 @@
     [manager POST:url parameters:nil headers:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         //成功回调
         self.tableDataArr = [responseObject objectForKey:@"data"];
-        self.collectionArr = [self.tableDataArr[0] objectForKey:@"entries"];
-        for (NSInteger i = 0; i<=self.collectionArr.count-1; i++) {
-            [self.collectionDataArr addObject:[self.collectionArr[0] objectForKey:@"name"]];
-            NSDictionary *dics = [self.collectionArr[0] objectForKey:@"entries"];
-            for(NSDictionary *dic in dics) {
-                DetialGood *detailgood = [[DetialGood alloc] initWithDictionary:dic error:nil];
-                [self.collectionDataArr addObject:detailgood];
+        for(NSDictionary *dic in self.tableDataArr) {
+            Categories *categories = [[Categories alloc] initWithDictionary:dic error:nil];
+            [self.collectionArr addObject:categories];
+        }
+        for (Categories *model in self.collectionArr) {
+            Categories *categories = model;
+            [self.categoriesArr addObject:categories.entries];
+        }
+        
+        for (int i = 0; i<self.categoriesArr.count; i++) {
+            NSMutableArray *arr = [[NSMutableArray alloc] init];
+            for(NSDictionary *dic in self.categoriesArr[i]) {
+                NSArray *detailGood = [dic objectForKey:@"entries"];
+                NSString *str = [dic objectForKey:@"name"];
+                [arr addObject: str];
+                for (NSDictionary *dic in detailGood) {
+                    Detail *detail = [[Detail alloc] initWithDictionary:dic error:nil];
+                    [arr addObject:detail];
+                }
             }
+            [self.collectionDataArr addObject:arr];
         }
         [self.tableView reloadData];
         [self.collectioView reloadData];
+        self.dataArr = self.collectionDataArr[0];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         //失败毁掉
         NSLog(@"%@",error);
@@ -178,11 +189,32 @@
     return _collectioView;
 }
 
+- (NSMutableArray *)categoriesArr {
+    if (!_categoriesArr) {
+        _categoriesArr = [NSMutableArray new];
+    }
+    return _categoriesArr;
+}
+
+- (NSMutableArray *)collectionArr {
+    if (!_collectionArr) {
+        _collectionArr = [NSMutableArray new];
+    }
+    return _collectionArr;
+}
+
 - (NSMutableArray *)collectionDataArr {
     if (!_collectionDataArr) {
         _collectionDataArr = [NSMutableArray new];
     }
     return _collectionDataArr;
+}
+
+- (NSMutableArray *)dataArr {
+    if (!_dataArr) {
+        _dataArr = [NSMutableArray new];
+    }
+    return _dataArr;
 }
 
 @end

@@ -36,9 +36,9 @@
     [self addSubview:self.titleLabel];
 }
 
-- (void)setCategory:(Category *)category {
-    _category = category;
-    self.titleLabel.text = _category.name;
+- (void)setCategories:(Categories *)categories {
+    _categories = categories;
+    self.titleLabel.text = _categories.name;
 }
 
 - (UILabel *)titleLabel {

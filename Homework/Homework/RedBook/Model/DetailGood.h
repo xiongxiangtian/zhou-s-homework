@@ -1,5 +1,5 @@
 //
-//  EntriesModel.h
+//  DetialGood.h
 //  Homework
 //
 //  Created by xihou damowang on 2020/8/9.
@@ -7,14 +7,15 @@
 //
 
 #import <JSONModel/JSONModel.h>
-#import "Categories.h"
-#import "Category.h"
+#import "Detail.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface EntriesModel : JSONModel
-/// 种类模型
-@property (nonatomic, strong) NSArray<Categories *> *categories;
+@interface DetailGood : JSONModel
+/// 详细分类标题
+@property (nonatomic, strong) NSArray<Detail *> *entries;
+
+@property (nonatomic, strong) NSString *name;
 
 @end
 
