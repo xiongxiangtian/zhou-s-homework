@@ -7,7 +7,12 @@
 //
 
 #import "XHSCollectionTitleCell.h"
-
+/**
+* @功能描述：右侧collectionView分类标题item
+* @创建时间：2020-8-11
+* @创建人：祖文渝
+* @备注:
+*/
 @interface XHSCollectionTitleCell ()
 /// 热门分类标题
 @property (nonatomic ,strong) UILabel *titleLabel;
@@ -21,7 +26,7 @@
     self = [super initWithFrame:frame];
     [self.contentView addSubview:self.titleLabel];
     [self.contentView addSubview:self.moreButton];
-    [self.titleLabel addSubview:self.divider];
+    [self.contentView addSubview:self.divider];
     return self;
 }
 
@@ -51,8 +56,8 @@
 
 - (UIView *)divider {
     if (!_divider) {
-        _divider = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.contentView.bounds.size.width, 0.4)];
-        _divider.backgroundColor = [UIColor grayColor];
+        _divider = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.contentView.bounds.size.width, 0.5)];
+        _divider.backgroundColor = [UIColor colorWithRed:222/255.0 green:222/255.0 blue:232/255.0 alpha:1];
     }
     return _divider;
 }

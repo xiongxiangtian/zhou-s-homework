@@ -8,6 +8,12 @@
 
 #import "XHSTableViewCell.h"
 
+/**
+* @功能描述：左侧tableveiwcell
+* @创建时间：2020-8-11
+* @创建人：祖文渝
+* @备注:
+*/
 @interface XHSTableViewCell ()
 /// 左侧Tableview标题
 @property (nonatomic, strong) UILabel *titleLabel;
@@ -18,9 +24,6 @@
 + (instancetype)cellWithTableview:(UITableView *)tableView {
     static NSString *XTCELL = @"xiaohongshutableviewcell";
     XHSTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:XTCELL];
-    if (!cell) {
-        cell = [[XHSTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:XTCELL];
-    }
     return cell;
 }
 
@@ -36,9 +39,10 @@
     [self addSubview:self.titleLabel];
 }
 
-- (void)setCategories:(Categories *)categories {
-    _categories = categories;
-    self.titleLabel.text = _categories.name;
+- (void)setModel1:(Model1 *)model1 {
+    _model1 = model1;
+    
+    self.titleLabel.text = _model1.name;
 }
 
 - (UILabel *)titleLabel {

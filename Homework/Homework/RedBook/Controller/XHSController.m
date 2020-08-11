@@ -11,16 +11,16 @@
 #import "XHSCollectionTitleCell.h"
 #import "XHSCollectionVIewCell.h"
 #import <AFNetworking/AFNetworking.h>
-#import "EntriesModel.h"
-#import "DetailGood.h"
-#import <UICollectionViewLeftAlignedLayout/UICollectionViewLeftAlignedLayout.h>
+#import "CollectionLeftFlowLayout.h"
+
+#import "Model1.h"
 
 /**
- * @功能描述：小红书商品分类页
- * @创建时间：2020-8-9
- * @创建人：祖文渝
- * @备注:
- */
+* @功能描述：仿小红书商品分类页面
+* @创建时间：2020-8-11
+* @创建人：祖文渝
+* @备注:
+*/
 @interface XHSController () <UITableViewDelegate,
                              UITableViewDataSource,
                              UICollectionViewDelegate,
@@ -30,17 +30,13 @@
 /// 右侧商品
 @property (nonatomic, strong) UICollectionView *collectioView;
 /// 数据
-@property (nonatomic, copy) NSArray<Categories *> *tableDataArr;
-@property (nonatomic, copy) NSMutableArray *collectionArr;
-@property (nonatomic, strong) NSMutableArray *categoriesArr;
-
-@property (nonatomic, strong) EntriesModel *model;
-
-@property (nonatomic, strong) Categories *categoriesModel;
-
-@property (nonatomic, strong) NSMutableArray *collectionDataArr;
-
-@property (nonatomic ,strong) NSMutableArray *dataArr;
+@property (nonatomic, copy) NSMutableArray<Model1 *> *tableDataArr;
+/// collectionView当前也的数据
+@property (nonatomic ,copy) NSMutableArray *data;
+/// 所有页的数据
+@property (nonatomic ,copy) NSMutableArray *datas;
+/// 自定义flowlayout
+@property (nonatomic, strong) UICollectionViewFlowLayout *layout;
 
 @end
 
@@ -69,12 +65,13 @@
 }
 #pragma mark - Delegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.tableDataArr.count;
+//    return self.tableDataArr.count;
+    return self.datas.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     XHSTableViewCell *cell =  [XHSTableViewCell cellWithTableview:tableView];
-    cell.categories = self.collectionArr[indexPath.row];
+    cell.model1 = self.tableDataArr[indexPath.row];
     return cell;
 }
 
@@ -83,34 +80,32 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    self.dataArr = self.collectionDataArr[indexPath.row];
+    self.data = self.datas[indexPath.row];
     [self.collectioView reloadData];
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.categoriesArr.count;
+    return self.data.count;
 }
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *XHSCCELL = @"XHSCCELL";
     static NSString *XHSCTITLECELL = @"XHSCTITLECELL";
-    if (self.dataArr.count>0) {
-        if([self.dataArr[indexPath.item] class] != [Detail class]) {
+        if([self.data[indexPath.item] class] != [Model3 class]) {
             XHSCollectionTitleCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:XHSCTITLECELL forIndexPath:indexPath];
-            cell.model = self.dataArr[indexPath.row];
-            if (self.dataArr[0]) {
+            cell.model = self.data[indexPath.row];
+            if (indexPath.item == 0) {
                 cell.divider.hidden = YES;
             }
             return cell;
         }
-    }
     XHSCollectionVIewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:XHSCCELL forIndexPath:indexPath];
-    cell.detail = self.dataArr[indexPath.row];
+    cell.model3 = self.data[indexPath.row];
     return cell;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    if ([self.dataArr[indexPath.item] class] != [Detail class]) {
+    if ([self.data[indexPath.item] class] != [Model3 class]) {
         return CGSizeMake(self.collectioView.bounds.size.width, 40);
     }else {
         return CGSizeMake((self.collectioView.bounds.size.width)/3-1, 110);
@@ -118,11 +113,12 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    if ([self.dataArr[indexPath.row] class]== [Detail class]) {
-        Detail *detail =  self.dataArr[indexPath.row];
-        NSLog(@"%@", detail.name);
+    if ([self.data[indexPath.row] class]== [Model3 class]) {
+        Model3 *model =  self.data[indexPath.row];
+        NSLog(@"%@", model.name);
     }
 }
+
 
 #pragma mark - 数据请求
 - (void)requestDate {
@@ -131,32 +127,28 @@
     //请求
     [manager POST:url parameters:nil headers:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         //成功回调
-        self.tableDataArr = [responseObject objectForKey:@"data"];
-        for(NSDictionary *dic in self.tableDataArr) {
-            Categories *categories = [[Categories alloc] initWithDictionary:dic error:nil];
-            [self.collectionArr addObject:categories];
+        NSArray *arr = [responseObject objectForKey:@"data"];
+        for(NSDictionary *dic in arr) {
+            Model1 *m1 = [Model1 modelWithdic:dic];
+            [self.tableDataArr addObject:m1];
         }
-        for (Categories *model in self.collectionArr) {
-            Categories *categories = model;
-            [self.categoriesArr addObject:categories.entries];
-        }
-        
-        for (int i = 0; i<self.categoriesArr.count; i++) {
-            NSMutableArray *arr = [[NSMutableArray alloc] init];
-            for(NSDictionary *dic in self.categoriesArr[i]) {
-                NSArray *detailGood = [dic objectForKey:@"entries"];
-                NSString *str = [dic objectForKey:@"name"];
-                [arr addObject: str];
-                for (NSDictionary *dic in detailGood) {
-                    Detail *detail = [[Detail alloc] initWithDictionary:dic error:nil];
-                    [arr addObject:detail];
+        for (int i = 0; i<self.tableDataArr.count; i++) {
+            Model1 *model1 = self.tableDataArr[i];
+            NSMutableArray *arr = [NSMutableArray new];
+            for (int j = 0; j<model1.entries.count; j++) {
+                Model2 *model2 = model1.entries[j];
+                [arr addObject:model2.name];
+                for (int k = 0; k < model2.entries.count; k++) {
+                    [arr addObject:model2.entries[k]];
                 }
             }
-            [self.collectionDataArr addObject:arr];
+                [self.datas addObject:arr];
         }
+        self.data = self.datas[0];
         [self.tableView reloadData];
         [self.collectioView reloadData];
-        self.dataArr = self.collectionDataArr[0];
+      
+        
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         //失败毁掉
         NSLog(@"%@",error);
@@ -173,17 +165,15 @@
         _tableView.tableFooterView = [UIView new];
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.scrollEnabled = NO;
+        
+        [_tableView registerClass:[XHSTableViewCell class] forCellReuseIdentifier:@"xiaohongshutableviewcell"];
     }
     return _tableView;
 }
 
 - (UICollectionView *)collectioView {
     if (!_collectioView) {
-        UICollectionViewLeftAlignedLayout *layout = [[UICollectionViewLeftAlignedLayout alloc] init];
-        [layout setScrollDirection:UICollectionViewScrollDirectionVertical];
-        layout.minimumInteritemSpacing = 0;
-        layout.minimumLineSpacing = 0;
-        _collectioView = [[UICollectionView alloc] initWithFrame:CGRectMake(90, 10, self.view.bounds.size.width-100, self.view.bounds.size.height - self.navigationController.navigationBar.bounds.size.height-[[UIApplication sharedApplication] statusBarFrame].size.height) collectionViewLayout:layout];
+        _collectioView = [[UICollectionView alloc] initWithFrame:CGRectMake(90, 10, self.view.bounds.size.width-100, self.view.bounds.size.height - self.navigationController.navigationBar.bounds.size.height-[[UIApplication sharedApplication] statusBarFrame].size.height) collectionViewLayout:self.layout];
         _collectioView.backgroundColor = [UIColor whiteColor];
         _collectioView.showsVerticalScrollIndicator = NO;
         _collectioView.delegate = self;
@@ -195,32 +185,35 @@
     return _collectioView;
 }
 
-- (NSMutableArray *)categoriesArr {
-    if (!_categoriesArr) {
-        _categoriesArr = [NSMutableArray new];
+- (NSMutableArray *)data {
+    if (!_data) {
+        _data = [NSMutableArray new];
     }
-    return _categoriesArr;
+    return _data;
 }
 
-- (NSMutableArray *)collectionArr {
-    if (!_collectionArr) {
-        _collectionArr = [NSMutableArray new];
+- (NSMutableArray<Model1 *> *)tableDataArr {
+    if (!_tableDataArr) {
+        _tableDataArr = [NSMutableArray new];
     }
-    return _collectionArr;
+    return _tableDataArr;
 }
 
-- (NSMutableArray *)collectionDataArr {
-    if (!_collectionDataArr) {
-        _collectionDataArr = [NSMutableArray new];
+- (NSMutableArray *)datas {
+    if (!_datas) {
+        _datas = [NSMutableArray new];
     }
-    return _collectionDataArr;
+    return _datas;
 }
 
-- (NSMutableArray *)dataArr {
-    if (!_dataArr) {
-        _dataArr = [NSMutableArray new];
+- (UICollectionViewFlowLayout *)layout {
+    if (!_layout) {
+        _layout = [CollectionLeftFlowLayout new];
+        [_layout setScrollDirection:UICollectionViewScrollDirectionVertical];
+        _layout.minimumInteritemSpacing = 0;
+        _layout.minimumLineSpacing = 0;
     }
-    return _dataArr;
+    return _layout;
 }
 
 @end
