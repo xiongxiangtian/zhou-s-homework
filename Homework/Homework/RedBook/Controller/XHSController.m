@@ -21,10 +21,13 @@
  * @创建人：祖文渝
  * @备注:
  */
-@interface XHSController () <UITableViewDelegate,
-                             UITableViewDataSource,
-                             UICollectionViewDelegate,
-                             UICollectionViewDataSource>
+@interface XHSController ()<
+UITableViewDelegate,
+UITableViewDataSource,
+UICollectionViewDelegate,
+UICollectionViewDataSource
+>
+
 /// 左则标题
 @property (nonatomic, strong) UITableView *tableView;
 /// 右侧商品
