@@ -8,7 +8,12 @@
 
 #import "XHSCollectionVIewCell.h"
 #import <SDWebImage/SDWebImage.h>
-
+/**
+* @功能描述：右侧CollectionView每个商品分类Item
+* @创建时间：2020-8-11
+* @创建人：祖文渝
+* @备注:
+*/
 @interface XHSCollectionVIewCell ()
 /// 商品详细分类标题
 @property (nonatomic, strong) UILabel *titleLabel;
@@ -26,12 +31,15 @@
     return self;
 }
 
-- (void)setDetailGood:(DetialGood *)detailGood {
-     _detailGood = detailGood;
-    self.titleLabel.text = _detailGood.name;
-    NSURL *goodImgViewUrl = [NSURL URLWithString:_detailGood.image];
-    [self.goodImgView sd_setImageWithURL:goodImgViewUrl placeholderImage: [UIImage imageNamed:@"123"]];
+
+- (void)setModel3:(Model3 *)model3 {
+    _model3 = model3;
+    self.titleLabel.text = model3.name;
+    NSURL *url = [NSURL URLWithString:_model3.image];
+    [self.goodImgView sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"123"]];
+    
 }
+
 
 - (UILabel *)titleLabel {
     if (!_titleLabel) {
@@ -50,6 +58,7 @@
     }
     return _goodImgView;
 }
+
 
 
 @end

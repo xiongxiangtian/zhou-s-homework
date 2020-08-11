@@ -19,14 +19,12 @@ PODS:
   - SDWebImage (5.8.4):
     - SDWebImage/Core (= 5.8.4)
   - SDWebImage/Core (5.8.4)
-  - UICollectionViewLeftAlignedLayout (1.0.2)
 
 DEPENDENCIES:
   - AFNetworking
   - JSONModel
   - Masonry
   - SDWebImage
-  - UICollectionViewLeftAlignedLayout
 
 SPEC REPOS:
   trunk:
@@ -34,15 +32,13 @@ SPEC REPOS:
     - JSONModel
     - Masonry
     - SDWebImage
-    - UICollectionViewLeftAlignedLayout
 
 SPEC CHECKSUMS:
   AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
   JSONModel: 02ab723958366a3fd27da57ea2af2113658762e9
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   SDWebImage: cf6922231e95550934da2ada0f20f2becf2ceba9
-  UICollectionViewLeftAlignedLayout: 830bf6fa5bab9f9b464f62e3384f9d2e00b3c0f6
 
-PODFILE CHECKSUM: 0ebacdf65d1d00c551b54c020702b7b621d2da55
+PODFILE CHECKSUM: 696be229c9eb92eb11c5ba6669f10b376bf04923
 
 COCOAPODS: 1.9.1

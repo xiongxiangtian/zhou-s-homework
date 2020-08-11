@@ -7,11 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Category.h"
+//#import "Categories.h#
+#import "Model1.h"
 NS_ASSUME_NONNULL_BEGIN
 
+
+/**
+ * @功能描述：左侧tableveiwcell
+ * @创建时间：2020-8-11
+ * @创建人：祖文渝
+ * @备注: 
+ */
 @interface XHSTableViewCell : UITableViewCell
-@property (nonatomic, strong) Category *category;
+//@property (nonatomic, strong) Categories *categories;
+@property (nonatomic, strong) Model1 *model1;
 /// 初始化cell
 /// @param tableView cell所属tableView
 + (instancetype)cellWithTableview:(UITableView *)tableView;

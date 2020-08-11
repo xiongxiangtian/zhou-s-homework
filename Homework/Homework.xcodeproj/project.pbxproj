@@ -7,10 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0014BB8324E0336100C01961 /* EntriesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0014BB8224E0336100C01961 /* EntriesModel.m */; };
-		0014BB8624E033C100C01961 /* Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 0014BB8524E033C100C01961 /* Category.m */; };
-		0014BB8924E048CB00C01961 /* DetialGood.m in Sources */ = {isa = PBXBuildFile; fileRef = 0014BB8824E048CB00C01961 /* DetialGood.m */; };
 		0014BB8C24E0E29100C01961 /* XHSCollectionTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0014BB8B24E0E29100C01961 /* XHSCollectionTitleCell.m */; };
+		0014BB9D24E2361900C01961 /* Model1.m in Sources */ = {isa = PBXBuildFile; fileRef = 0014BB9C24E2361900C01961 /* Model1.m */; };
+		0014BBA024E23FCD00C01961 /* Model3.m in Sources */ = {isa = PBXBuildFile; fileRef = 0014BB9F24E23FCD00C01961 /* Model3.m */; };
+		0014BBA324E2403100C01961 /* Model2.m in Sources */ = {isa = PBXBuildFile; fileRef = 0014BBA224E2403100C01961 /* Model2.m */; };
+		0014BBAC24E2706A00C01961 /* CollectionLeftFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 0014BBAB24E2706A00C01961 /* CollectionLeftFlowLayout.m */; };
 		005127D424DFFEA600C010D0 /* XHSController.m in Sources */ = {isa = PBXBuildFile; fileRef = 005127D324DFFEA600C010D0 /* XHSController.m */; };
 		005127D824E00F0300C010D0 /* XHSTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 005127D724E00F0300C010D0 /* XHSTableViewCell.m */; };
 		005127DB24E018E200C010D0 /* XHSCollectionVIewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 005127DA24E018E200C010D0 /* XHSCollectionVIewCell.m */; };
@@ -60,14 +61,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0014BB8124E0336100C01961 /* EntriesModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EntriesModel.h; sourceTree = "<group>"; };
-		0014BB8224E0336100C01961 /* EntriesModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EntriesModel.m; sourceTree = "<group>"; };
-		0014BB8424E033C100C01961 /* Category.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Category.h; sourceTree = "<group>"; };
-		0014BB8524E033C100C01961 /* Category.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Category.m; sourceTree = "<group>"; };
-		0014BB8724E048CB00C01961 /* DetialGood.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetialGood.h; sourceTree = "<group>"; };
-		0014BB8824E048CB00C01961 /* DetialGood.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetialGood.m; sourceTree = "<group>"; };
 		0014BB8A24E0E29100C01961 /* XHSCollectionTitleCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHSCollectionTitleCell.h; sourceTree = "<group>"; };
 		0014BB8B24E0E29100C01961 /* XHSCollectionTitleCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHSCollectionTitleCell.m; sourceTree = "<group>"; };
+		0014BB9B24E2361900C01961 /* Model1.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Model1.h; sourceTree = "<group>"; };
+		0014BB9C24E2361900C01961 /* Model1.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Model1.m; sourceTree = "<group>"; };
+		0014BB9E24E23FCD00C01961 /* Model3.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Model3.h; sourceTree = "<group>"; };
+		0014BB9F24E23FCD00C01961 /* Model3.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Model3.m; sourceTree = "<group>"; };
+		0014BBA124E2403100C01961 /* Model2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Model2.h; sourceTree = "<group>"; };
+		0014BBA224E2403100C01961 /* Model2.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Model2.m; sourceTree = "<group>"; };
+		0014BBAA24E2706A00C01961 /* CollectionLeftFlowLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CollectionLeftFlowLayout.h; sourceTree = "<group>"; };
+		0014BBAB24E2706A00C01961 /* CollectionLeftFlowLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CollectionLeftFlowLayout.m; sourceTree = "<group>"; };
 		005127D224DFFEA600C010D0 /* XHSController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHSController.h; sourceTree = "<group>"; };
 		005127D324DFFEA600C010D0 /* XHSController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHSController.m; sourceTree = "<group>"; };
 		005127D624E00F0300C010D0 /* XHSTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHSTableViewCell.h; sourceTree = "<group>"; };
@@ -176,12 +179,12 @@
 		0014BB8024E0334300C01961 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				0014BB8124E0336100C01961 /* EntriesModel.h */,
-				0014BB8224E0336100C01961 /* EntriesModel.m */,
-				0014BB8424E033C100C01961 /* Category.h */,
-				0014BB8524E033C100C01961 /* Category.m */,
-				0014BB8724E048CB00C01961 /* DetialGood.h */,
-				0014BB8824E048CB00C01961 /* DetialGood.m */,
+				0014BB9B24E2361900C01961 /* Model1.h */,
+				0014BB9C24E2361900C01961 /* Model1.m */,
+				0014BBA124E2403100C01961 /* Model2.h */,
+				0014BBA224E2403100C01961 /* Model2.m */,
+				0014BB9E24E23FCD00C01961 /* Model3.h */,
+				0014BB9F24E23FCD00C01961 /* Model3.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -233,6 +236,8 @@
 				0014BB8024E0334300C01961 /* Model */,
 				005127D524E00ED600C010D0 /* View */,
 				005127D124DFFAA100C010D0 /* Controller */,
+				0014BBAA24E2706A00C01961 /* CollectionLeftFlowLayout.h */,
+				0014BBAB24E2706A00C01961 /* CollectionLeftFlowLayout.m */,
 			);
 			path = RedBook;
 			sourceTree = "<group>";
@@ -532,7 +537,6 @@
 				00741CC924DAD77600F857CF /* MyNavigationController.m in Sources */,
 				00741CB824DAA00D00F857CF /* SDWebImageCoder.m in Sources */,
 				00741CC024DAA00D00F857CF /* NSImage+WebCache.m in Sources */,
-				0014BB8924E048CB00C01961 /* DetialGood.m in Sources */,
 				00741CBF24DAA00D00F857CF /* UIImageView+WebCache.m in Sources */,
 				00741CC324DAA00D00F857CF /* UIView+WebCacheOperation.m in Sources */,
 				005127D424DFFEA600C010D0 /* XHSController.m in Sources */,
@@ -548,15 +552,17 @@
 				00741CC524DAA00D00F857CF /* SDWebImageImageIOCoder.m in Sources */,
 				00741CB524DAA00D00F857CF /* SDWebImageCoderHelper.m in Sources */,
 				00D8747824D829A300FA5AEF /* main.m in Sources */,
-				0014BB8624E033C100C01961 /* Category.m in Sources */,
+				0014BBA024E23FCD00C01961 /* Model3.m in Sources */,
+				0014BBA324E2403100C01961 /* Model2.m in Sources */,
 				00741CC624DAA00D00F857CF /* UIButton+WebCache.m in Sources */,
 				00CF515424DC39040092F229 /* MyCell.m in Sources */,
+				0014BB9D24E2361900C01961 /* Model1.m in Sources */,
 				00741CC124DAA00D00F857CF /* SDWebImageGIFCoder.m in Sources */,
-				0014BB8324E0336100C01961 /* EntriesModel.m in Sources */,
 				00741CAE24DAA00D00F857CF /* UIImageView+HighlightedWebCache.m in Sources */,
 				00741CB324DAA00D00F857CF /* UIImage+GIF.m in Sources */,
 				00D8748824D8F3BB00FA5AEF /* PayLiveHeader.m in Sources */,
 				00741CB024DAA00D00F857CF /* UIImage+ForceDecode.m in Sources */,
+				0014BBAC24E2706A00C01961 /* CollectionLeftFlowLayout.m in Sources */,
 				005127DB24E018E200C010D0 /* XHSCollectionVIewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
