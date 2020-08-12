@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "VIew3Controller.h"
 typedef void(^MyBlock)(NSString *str);
 
 NS_ASSUME_NONNULL_BEGIN
@@ -14,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface View2Controller : UIViewController
 
 @property (nonatomic, copy) MyBlock block;
+
+@property (nonatomic, weak) id<View3Delegate> delegate;
 
 @end
 

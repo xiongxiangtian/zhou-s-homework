@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TableModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SelectTagCell : UITableViewCell
+
+@property (nonatomic, strong) TableModel *model;
 
 + (instancetype)cellWithTablView:(UITableView *)tableView;
 

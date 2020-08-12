@@ -16,7 +16,9 @@
 #import "VIew3Controller.h"
 #import "PayLiveController.h"
 
-@interface ViewController () <UITableViewDelegate, UITableViewDataSource,View3Delegate>
+@interface ViewController () <UITableViewDelegate,
+UITableViewDataSource,
+View3Delegate>
 @property (nonatomic, strong) UITableView *tableview;
 @property (nonatomic, strong) NSArray *VCArr;
 @property (nonatomic, strong) NSDictionary *payLiveDic;
@@ -100,11 +102,12 @@
             controller = [SelectTageController new];
             break;
         case 3:
-            NSLog(@"123");
+            NSLog(@"");
             View1Controller *vc1 = [View1Controller new];
             vc1.block = ^(NSString *str){
                 NSLog(@"block----%@",str);
             };
+            vc1.delegate = self;
             controller = vc1;
             break;
     }

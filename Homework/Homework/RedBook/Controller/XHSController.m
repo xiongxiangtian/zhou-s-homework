@@ -91,7 +91,7 @@
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *XHSCCELL = @"XHSCCELL";
     static NSString *XHSCTITLECELL = @"XHSCTITLECELL";
-        if([self.data[indexPath.item] class] != [Model3 class]) {
+        if([self.data[indexPath.item] class] != [Model1 class]) {
             XHSCollectionTitleCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:XHSCTITLECELL forIndexPath:indexPath];
             cell.model = self.data[indexPath.row];
             if (indexPath.item == 0) {
@@ -100,12 +100,12 @@
             return cell;
         }
     XHSCollectionVIewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:XHSCCELL forIndexPath:indexPath];
-    cell.model3 = self.data[indexPath.row];
+    cell.model = self.data[indexPath.row];
     return cell;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    if ([self.data[indexPath.item] class] != [Model3 class]) {
+    if ([self.data[indexPath.item] class] != [Model1 class]) {
         return CGSizeMake(self.collectioView.bounds.size.width, 40);
     }else {
         return CGSizeMake((self.collectioView.bounds.size.width)/3-1, 110);
@@ -113,8 +113,8 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    if ([self.data[indexPath.row] class]== [Model3 class]) {
-        Model3 *model =  self.data[indexPath.row];
+    if ([self.data[indexPath.row] class]== [Model1 class]) {
+        Model1 *model =  self.data[indexPath.row];
         NSLog(@"%@", model.name);
     }
 }
@@ -132,11 +132,12 @@
             Model1 *m1 = [Model1 modelWithdic:dic];
             [self.tableDataArr addObject:m1];
         }
+ 
         for (int i = 0; i<self.tableDataArr.count; i++) {
             Model1 *model1 = self.tableDataArr[i];
             NSMutableArray *arr = [NSMutableArray new];
             for (int j = 0; j<model1.entries.count; j++) {
-                Model2 *model2 = model1.entries[j];
+                Model1 *model2 = model1.entries[j];
                 [arr addObject:model2.name];
                 for (int k = 0; k < model2.entries.count; k++) {
                     [arr addObject:model2.entries[k]];

@@ -9,9 +9,10 @@
 #import "View1Controller.h"
 #import "View2Controller.h"
 
-@interface View1Controller ()
+@interface View1Controller ()<View3Delegate>
 
 @property (nonatomic, copy) NSString *textStr;
+@property (nonatomic, copy) NSString *delegateStr;
 
 @end
 
@@ -34,8 +35,19 @@
         self.block(str);
     };
     [self.navigationController pushViewController:vc animated:YES];
+    
+    vc.delegate = self;
 }
 
+
+-(void)dealloc {
+    NSLog(@"view1view1view1view1view1view1view1view1释放");;
+}
+
+- (void)View3Transimit:(NSString *)str {
+    self.delegateStr = str;
+    [self.delegate View3Transimit:str];
+}
 
 
 @end

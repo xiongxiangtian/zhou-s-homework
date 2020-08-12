@@ -13,8 +13,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol View3Delegate <NSObject>
 - (void)View3Transimit:(NSString *)str;
-
-
 @end
 
 @interface VIew3Controller : UIViewController

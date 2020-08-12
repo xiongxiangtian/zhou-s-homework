@@ -7,7 +7,7 @@
 //
 
 #import <JSONModel/JSONModel.h>
-#import "Model2.h"
+
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -23,11 +23,17 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Model1 : JSONModel
 /// 种类
-@property (nonatomic ,strong) NSArray <Model2>*entries;
-/// <#Description#>
+@property (nonatomic ,strong) NSArray<Model1,Optional> *entries;
+/// 
 @property (nonatomic, strong) NSString *info_id;
+
+@property (nonatomic, strong) NSString<Optional> *image;
+
+@property (nonatomic, strong) NSString<Optional> *link;
 /// TalblewView的cell的标题
 @property (nonatomic, strong) NSString *name;
+
+
 
 + (instancetype)modelWithdic:(NSDictionary *)dic;
 

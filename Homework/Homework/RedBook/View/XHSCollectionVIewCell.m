@@ -32,10 +32,10 @@
 }
 
 
-- (void)setModel3:(Model3 *)model3 {
-    _model3 = model3;
-    self.titleLabel.text = model3.name;
-    NSURL *url = [NSURL URLWithString:_model3.image];
+- (void)setModel:(Model1 *)model {
+    _model = model;
+    self.titleLabel.text = model.name;
+    NSURL *url = [NSURL URLWithString:_model.image];
     [self.goodImgView sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"123"]];
     
 }

@@ -39,7 +39,7 @@
     NSArray *arr =  self.navigationController.viewControllers;
     ViewController *vc = [arr objectAtIndex:0];
     [self.navigationController popToRootViewControllerAnimated:YES];
-    self.delegate = vc;
+    
     [self.delegate View3Transimit:self.textfield.text];
     [self notificationTransimit];
     self.block(self.textfield.text);
@@ -53,7 +53,9 @@
 
 
 
-
+-(void)dealloc {
+    NSLog(@"333333333333释放");;
+}
 
 /*
 #pragma mark - Navigation
