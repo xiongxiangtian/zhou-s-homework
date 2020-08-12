@@ -12,6 +12,11 @@
 		0014BBA024E23FCD00C01961 /* Model3.m in Sources */ = {isa = PBXBuildFile; fileRef = 0014BB9F24E23FCD00C01961 /* Model3.m */; };
 		0014BBA324E2403100C01961 /* Model2.m in Sources */ = {isa = PBXBuildFile; fileRef = 0014BBA224E2403100C01961 /* Model2.m */; };
 		0014BBAC24E2706A00C01961 /* CollectionLeftFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 0014BBAB24E2706A00C01961 /* CollectionLeftFlowLayout.m */; };
+		0014BBB024E2C1F000C01961 /* SelectTageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0014BBAF24E2C1F000C01961 /* SelectTageController.m */; };
+		0014BBB724E2C8B400C01961 /* SelectTagCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0014BBB624E2C8B400C01961 /* SelectTagCell.m */; };
+		0014BBBB24E2D8C100C01961 /* View1Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 0014BBBA24E2D8C100C01961 /* View1Controller.m */; };
+		0014BBBE24E2DA9A00C01961 /* View2Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 0014BBBD24E2DA9A00C01961 /* View2Controller.m */; };
+		0014BBC124E37C8600C01961 /* VIew3Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 0014BBC024E37C8600C01961 /* VIew3Controller.m */; };
 		005127D424DFFEA600C010D0 /* XHSController.m in Sources */ = {isa = PBXBuildFile; fileRef = 005127D324DFFEA600C010D0 /* XHSController.m */; };
 		005127D824E00F0300C010D0 /* XHSTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 005127D724E00F0300C010D0 /* XHSTableViewCell.m */; };
 		005127DB24E018E200C010D0 /* XHSCollectionVIewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 005127DA24E018E200C010D0 /* XHSCollectionVIewCell.m */; };
@@ -71,6 +76,16 @@
 		0014BBA224E2403100C01961 /* Model2.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Model2.m; sourceTree = "<group>"; };
 		0014BBAA24E2706A00C01961 /* CollectionLeftFlowLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CollectionLeftFlowLayout.h; sourceTree = "<group>"; };
 		0014BBAB24E2706A00C01961 /* CollectionLeftFlowLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CollectionLeftFlowLayout.m; sourceTree = "<group>"; };
+		0014BBAE24E2C1F000C01961 /* SelectTageController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectTageController.h; sourceTree = "<group>"; };
+		0014BBAF24E2C1F000C01961 /* SelectTageController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelectTageController.m; sourceTree = "<group>"; };
+		0014BBB524E2C8B400C01961 /* SelectTagCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectTagCell.h; sourceTree = "<group>"; };
+		0014BBB624E2C8B400C01961 /* SelectTagCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelectTagCell.m; sourceTree = "<group>"; };
+		0014BBB924E2D8C100C01961 /* View1Controller.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = View1Controller.h; sourceTree = "<group>"; };
+		0014BBBA24E2D8C100C01961 /* View1Controller.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = View1Controller.m; sourceTree = "<group>"; };
+		0014BBBC24E2DA9A00C01961 /* View2Controller.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = View2Controller.h; sourceTree = "<group>"; };
+		0014BBBD24E2DA9A00C01961 /* View2Controller.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = View2Controller.m; sourceTree = "<group>"; };
+		0014BBBF24E37C8600C01961 /* VIew3Controller.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VIew3Controller.h; sourceTree = "<group>"; };
+		0014BBC024E37C8600C01961 /* VIew3Controller.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VIew3Controller.m; sourceTree = "<group>"; };
 		005127D224DFFEA600C010D0 /* XHSController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHSController.h; sourceTree = "<group>"; };
 		005127D324DFFEA600C010D0 /* XHSController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHSController.m; sourceTree = "<group>"; };
 		005127D624E00F0300C010D0 /* XHSTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHSTableViewCell.h; sourceTree = "<group>"; };
@@ -197,6 +212,54 @@
 				00741C5824DA4B6E00F857CF /* Model */,
 			);
 			path = PayLive;
+			sourceTree = "<group>";
+		};
+		0014BBAD24E2C1BB00C01961 /* SelectTag */ = {
+			isa = PBXGroup;
+			children = (
+				0014BBB424E2C88600C01961 /* Model */,
+				0014BBB324E2C87D00C01961 /* View */,
+				0014BBB124E2C85400C01961 /* Controller */,
+			);
+			path = SelectTag;
+			sourceTree = "<group>";
+		};
+		0014BBB124E2C85400C01961 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0014BBAE24E2C1F000C01961 /* SelectTageController.h */,
+				0014BBAF24E2C1F000C01961 /* SelectTageController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		0014BBB324E2C87D00C01961 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0014BBB524E2C8B400C01961 /* SelectTagCell.h */,
+				0014BBB624E2C8B400C01961 /* SelectTagCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0014BBB424E2C88600C01961 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0014BBB824E2D83F00C01961 /* TransimitValue */ = {
+			isa = PBXGroup;
+			children = (
+				0014BBB924E2D8C100C01961 /* View1Controller.h */,
+				0014BBBA24E2D8C100C01961 /* View1Controller.m */,
+				0014BBBC24E2DA9A00C01961 /* View2Controller.h */,
+				0014BBBD24E2DA9A00C01961 /* View2Controller.m */,
+				0014BBBF24E37C8600C01961 /* VIew3Controller.h */,
+				0014BBC024E37C8600C01961 /* VIew3Controller.m */,
+			);
+			path = TransimitValue;
 			sourceTree = "<group>";
 		};
 		005127D024DFFA7E00C010D0 /* 专辑页 */ = {
@@ -373,6 +436,8 @@
 				00D8746C24D8299F00FA5AEF /* ViewController.m */,
 				00741CC724DAD77600F857CF /* MyNavigationController.h */,
 				00741CC824DAD77600F857CF /* MyNavigationController.m */,
+				0014BBB824E2D83F00C01961 /* TransimitValue */,
+				0014BBAD24E2C1BB00C01961 /* SelectTag */,
 				005127DD24E02EEB00C010D0 /* RedBook */,
 				0014BB9124E133BE00C01961 /* PayLive */,
 				00D8746524D8299F00FA5AEF /* AppDelegate.h */,
@@ -530,6 +595,8 @@
 				00741CAD24DAA00D00F857CF /* SDWebImageManager.m in Sources */,
 				00741CBA24DAA00D00F857CF /* SDAnimatedImageRep.m in Sources */,
 				005127D824E00F0300C010D0 /* XHSTableViewCell.m in Sources */,
+				0014BBBB24E2D8C100C01961 /* View1Controller.m in Sources */,
+				0014BBBE24E2DA9A00C01961 /* View2Controller.m in Sources */,
 				00741CBE24DAA00D00F857CF /* NSData+ImageContentType.m in Sources */,
 				00741CBB24DAA00D00F857CF /* SDImageCache.m in Sources */,
 				00D8746724D8299F00FA5AEF /* AppDelegate.m in Sources */,
@@ -546,6 +613,7 @@
 				00741CB624DAA00D00F857CF /* SDWebImageCompat.m in Sources */,
 				00741C6124DA4E8A00F857CF /* SPUser.m in Sources */,
 				0014BB8C24E0E29100C01961 /* XHSCollectionTitleCell.m in Sources */,
+				0014BBB024E2C1F000C01961 /* SelectTageController.m in Sources */,
 				00741CB424DAA00D00F857CF /* UIImage+MultiFormat.m in Sources */,
 				00741CBC24DAA00D00F857CF /* SDWebImageDownloaderOperation.m in Sources */,
 				00741CB724DAA00D00F857CF /* SDWebImagePrefetcher.m in Sources */,
@@ -555,6 +623,8 @@
 				0014BBA024E23FCD00C01961 /* Model3.m in Sources */,
 				0014BBA324E2403100C01961 /* Model2.m in Sources */,
 				00741CC624DAA00D00F857CF /* UIButton+WebCache.m in Sources */,
+				0014BBB724E2C8B400C01961 /* SelectTagCell.m in Sources */,
+				0014BBC124E37C8600C01961 /* VIew3Controller.m in Sources */,
 				00CF515424DC39040092F229 /* MyCell.m in Sources */,
 				0014BB9D24E2361900C01961 /* Model1.m in Sources */,
 				00741CC124DAA00D00F857CF /* SDWebImageGIFCoder.m in Sources */,
