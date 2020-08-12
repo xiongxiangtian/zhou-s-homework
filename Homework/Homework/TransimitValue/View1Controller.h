@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+typedef void(^MyBlock)(NSString *str);
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface View1Controller : UIViewController
+
+@property (nonatomic, copy) MyBlock block;
 
 @end
 

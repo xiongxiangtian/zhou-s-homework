@@ -11,7 +11,7 @@
 
 @interface View2Controller ()
 
-@property (nonatomic, strong) VIew3Controller *vc3;
+@property (nonatomic, copy)NSString *textStr;
 
 @end
 
@@ -24,17 +24,20 @@
     button.backgroundColor = [UIColor blackColor];
     [self.view addSubview: button];
     [button addTarget:self action:@selector(btnClick) forControlEvents:UIControlEventTouchUpInside];
+    
+    self.block(self.textStr);
 }
 - (void)btnClick {
-    [self.navigationController pushViewController:self.vc3 animated:YES];
+    VIew3Controller *vc3 = [VIew3Controller new];
+    
+    [self.navigationController pushViewController:vc3 animated:YES];
+    
+    vc3.block = ^(NSString *str) {
+        self.textStr = str;
+        self.block(str);
+    };
 }
 
-- (VIew3Controller *)vc3 {
-    if (!_vc3) {
-        _vc3 = [VIew3Controller new];        
-    }
-    return _vc3;
-}
 /*
 #pragma mark - Navigation
 

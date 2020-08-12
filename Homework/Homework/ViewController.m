@@ -14,47 +14,33 @@
 #import "SelectTageController.h"
 #import "View1Controller.h"
 #import "VIew3Controller.h"
+#import "PayLiveController.h"
 
 @interface ViewController () <UITableViewDelegate, UITableViewDataSource,View3Delegate>
 @property (nonatomic, strong) UITableView *tableview;
 @property (nonatomic, strong) NSArray *VCArr;
-@property (nonatomic, strong) PayLiveController *payLiveVC;
-@property (nonatomic, strong) XHSController *xhsVC;
 @property (nonatomic, strong) NSDictionary *payLiveDic;
 @property (nonatomic, strong) NSDictionary *xhsDic;
-@property (nonatomic, strong) SelectTageController *selectTagVC;
 @property (nonatomic, strong) NSDictionary *selecTagDic;
-@property (nonatomic ,strong) View1Controller *vc1;
 @property (nonatomic, strong) NSDictionary *vc1Dic;
-@property (nonatomic, strong) VIew3Controller *vc3;
 
 @end
 
 @implementation ViewController
 
-
-- (instancetype)init
-{
-    static ViewController *instance;
-    if (!instance) {
-        instance = [super init];
-    }
-    return instance;
-}
-
 #pragma mark - Life cycle
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.payLiveDic = [[NSDictionary alloc] initWithObjectsAndKeys:self.payLiveVC,@"controller1",
+    self.payLiveDic = [[NSDictionary alloc] initWithObjectsAndKeys:
                                                               @"payLiveVC", @"title",
                                                               @"2020-08-09", @"createTime", nil];
-    self.xhsDic = [[NSDictionary alloc] initWithObjectsAndKeys:self.xhsVC, @"controller2",
+    self.xhsDic = [[NSDictionary alloc] initWithObjectsAndKeys:
                                                               @"小红书页面", @"title",
                                                               @"2020-08-09", @"createTime", nil];
-    self.selecTagDic = [[NSDictionary alloc] initWithObjectsAndKeys:self.selectTagVC,@"controller3",
+    self.selecTagDic = [[NSDictionary alloc] initWithObjectsAndKeys:
                                                               @"selectTagVC", @"title",
                                                               @"2020-08-11", @"createTime",nil];
-    self.vc1Dic = [[NSDictionary alloc] initWithObjectsAndKeys:self.vc1, @"controller4",
+    self.vc1Dic = [[NSDictionary alloc] initWithObjectsAndKeys:
                                                               @"transimitVC", @"title",
                                                               @"2020-08-11", @"createTime", nil];
     self.VCArr = [[NSArray alloc] initWithObjects:self.payLiveDic, self.xhsDic,self.selecTagDic, self.vc1Dic, nil];
@@ -62,8 +48,9 @@
     [self.view addSubview:self.tableview];
     
     [self setupNotification];
-    [self setupBlock];
     
+    
+
     
 }
 
@@ -81,12 +68,6 @@
     NSLog(@"Notification---%@", notification.userInfo[@"transimit"]);
 }
 
-#pragma mark - Block
-- (void)setupBlock {
-    self.vc3.block = ^(NSString *str) {
-        NSLog(@"block----------%@",str);
-    };
-}
 
 #pragma mark - Delegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -100,10 +81,37 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *controller = [NSString stringWithFormat:@"controller%ld", (long)indexPath.row+1];
-    NSDictionary *dic = self.VCArr[indexPath.row];
-    [self.navigationController pushViewController:[dic objectForKey:controller] animated:YES];
+//    UIViewController *controller = [self getVC:indexPath.row];
+//    [self.navigationController pushViewController:controller animated:YES];
+    UIViewController *controller = [self getVC:indexPath.row];
+    [self.navigationController pushViewController:controller animated:YES];
 }
+
+- (id)getVC:(NSInteger)i {
+    id controller;
+    switch (i) {
+        case 0:
+            controller = [PayLiveController new];
+            break;
+        case 1:
+            controller = [XHSController new];
+            break;
+        case 2:
+            controller = [SelectTageController new];
+            break;
+        case 3:
+            NSLog(@"123");
+            View1Controller *vc1 = [View1Controller new];
+            vc1.block = ^(NSString *str){
+                NSLog(@"block----%@",str);
+            };
+            controller = vc1;
+            break;
+    }
+    return controller;
+}
+
+
 
 #pragma mark - 代理传值
 - (void)View3Transimit:(NSString *)str {
@@ -125,41 +133,8 @@
     return _tableview;
 }
 
-- (PayLiveController *)payLiveVC {
-    if (!_payLiveVC) {
-        _payLiveVC = [PayLiveController new];
-    }
-    return _payLiveVC;
-}
 
-- (XHSController *)xhsVC {
-    if (!_xhsVC) {
-        _xhsVC = [XHSController new];
-    }
-    return _xhsVC;
-}
 
-- (SelectTageController *)selectTagVC {
-    if (!_selectTagVC) {
-        _selectTagVC = [SelectTageController new];
-    }
-    return _selectTagVC;
-}
-
-- (View1Controller *)vc1 {
-    if (!_vc1) {
-        _vc1 = [View1Controller new];
-    }
-        return _vc1;
-}
-
-- (VIew3Controller *)vc3 {
-    if (!_vc3) {
-        _vc3 = [[VIew3Controller alloc] init];
-        _vc3.delegate = self;
-    }
-    return _vc3;
-}
 
 @end
 

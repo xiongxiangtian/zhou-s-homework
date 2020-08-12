@@ -21,15 +21,6 @@
 
 @implementation VIew3Controller
 
-- (instancetype)init
-{
-    static VIew3Controller *instance;
-    if (!instance) {
-        instance = [super init];
-    }
-    return instance;
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor blackColor];
@@ -44,32 +35,25 @@
 }
 
 - (void)btnClick {
+    
+    NSArray *arr =  self.navigationController.viewControllers;
+    ViewController *vc = [arr objectAtIndex:0];
+    [self.navigationController popToRootViewControllerAnimated:YES];
+    self.delegate = vc;
+    [self.delegate View3Transimit:self.textfield.text];
     [self notificationTransimit];
-    
-    [self delegateTransimit];
-    
     self.block(self.textfield.text);
-    
 }
 
 - (void)notificationTransimit {
     NSDictionary *dic = [[NSDictionary alloc] initWithObjectsAndKeys:self.textfield.text, @"transimit", nil];
     NSNotification *notification =[NSNotification notificationWithName:@"transimit" object:nil userInfo:dic];
     [[NSNotificationCenter defaultCenter] postNotification:notification];
-    
 }
 
-- (void)delegateTransimit {
-    self.delegate = self.vc;
-    [self.delegate View3Transimit:self.textfield.text];
-}
 
-- (ViewController *)vc {
-    if (!_vc) {
-        _vc = [ViewController new];
-    }
-    return _vc;
-}
+
+
 
 /*
 #pragma mark - Navigation

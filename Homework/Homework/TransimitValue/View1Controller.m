@@ -11,7 +11,7 @@
 
 @interface View1Controller ()
 
-@property (nonatomic, strong) View2Controller *vc2;
+@property (nonatomic, copy) NSString *textStr;
 
 @end
 
@@ -28,14 +28,14 @@
 }
 
 - (void)btnClick {
-    [self.navigationController pushViewController:self.vc2 animated:YES];
+    View2Controller *vc = [View2Controller new];
+    vc.block = ^(NSString *str) {
+        self.textStr = str;
+        self.block(str);
+    };
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
-- (View2Controller *)vc2 {
-    if (!_vc2) {
-        _vc2 = [View2Controller new];
-    }
-    return _vc2;
-}
+
 
 @end
