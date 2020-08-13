@@ -8,12 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "CollectionModel.h"
+#import "TableModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface TagCell : UICollectionViewCell
 
 @property (nonatomic, strong) CollectionModel *model;
+@property (nonatomic, strong) TableModel *tableModel;
 
 @end
 

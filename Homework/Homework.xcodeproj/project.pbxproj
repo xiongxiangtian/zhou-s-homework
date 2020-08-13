@@ -55,6 +55,8 @@
 		00741CC524DAA00D00F857CF /* SDWebImageImageIOCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 00741CA524DAA00D00F857CF /* SDWebImageImageIOCoder.m */; };
 		00741CC624DAA00D00F857CF /* UIButton+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 00741CA924DAA00D00F857CF /* UIButton+WebCache.m */; };
 		00741CC924DAD77600F857CF /* MyNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00741CC824DAD77600F857CF /* MyNavigationController.m */; };
+		00939FF824E4E5A200CD867B /* TagCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 00939FF724E4E5A200CD867B /* TagCollectionViewFlowLayout.m */; };
+		00939FFC24E539B300CD867B /* TagHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 00939FFB24E539B300CD867B /* TagHeader.m */; };
 		00CF515424DC39040092F229 /* MyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 00CF515324DC39040092F229 /* MyCell.m */; };
 		00D8746724D8299F00FA5AEF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 00D8746624D8299F00FA5AEF /* AppDelegate.m */; };
 		00D8746D24D8299F00FA5AEF /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00D8746C24D8299F00FA5AEF /* ViewController.m */; };
@@ -163,6 +165,10 @@
 		00741CAA24DAA00D00F857CF /* UIImage+GIF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+GIF.h"; sourceTree = "<group>"; };
 		00741CC724DAD77600F857CF /* MyNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyNavigationController.h; sourceTree = "<group>"; };
 		00741CC824DAD77600F857CF /* MyNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyNavigationController.m; sourceTree = "<group>"; };
+		00939FF624E4E5A200CD867B /* TagCollectionViewFlowLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TagCollectionViewFlowLayout.h; sourceTree = "<group>"; };
+		00939FF724E4E5A200CD867B /* TagCollectionViewFlowLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TagCollectionViewFlowLayout.m; sourceTree = "<group>"; };
+		00939FFA24E539B300CD867B /* TagHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TagHeader.h; sourceTree = "<group>"; };
+		00939FFB24E539B300CD867B /* TagHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TagHeader.m; sourceTree = "<group>"; };
 		00CF515224DC39040092F229 /* MyCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyCell.h; sourceTree = "<group>"; };
 		00CF515324DC39040092F229 /* MyCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyCell.m; sourceTree = "<group>"; };
 		00D8746224D8299F00FA5AEF /* Homework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Homework.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -222,6 +228,8 @@
 				0014BBB424E2C88600C01961 /* Model */,
 				0014BBB324E2C87D00C01961 /* View */,
 				0014BBB124E2C85400C01961 /* Controller */,
+				00939FF624E4E5A200CD867B /* TagCollectionViewFlowLayout.h */,
+				00939FF724E4E5A200CD867B /* TagCollectionViewFlowLayout.m */,
 			);
 			path = SelectTag;
 			sourceTree = "<group>";
@@ -242,6 +250,8 @@
 				0014BBB624E2C8B400C01961 /* SelectTagCell.m */,
 				0014BBCF24E4359A00C01961 /* TagCell.h */,
 				0014BBD024E4359A00C01961 /* TagCell.m */,
+				00939FFA24E539B300CD867B /* TagHeader.h */,
+				00939FFB24E539B300CD867B /* TagHeader.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -600,6 +610,7 @@
 				00741C6A24DA50B600F857CF /* CoverModel.m in Sources */,
 				00741CC224DAA00D00F857CF /* SDImageCacheConfig.m in Sources */,
 				00741CB924DAA00D00F857CF /* NSButton+WebCache.m in Sources */,
+				00939FFC24E539B300CD867B /* TagHeader.m in Sources */,
 				0014BBCB24E3EFA800C01961 /* TableModel.m in Sources */,
 				0014BBD124E4359A00C01961 /* TagCell.m in Sources */,
 				00741CB124DAA00D00F857CF /* SDWebImageCodersManager.m in Sources */,
@@ -646,6 +657,7 @@
 				00741CB024DAA00D00F857CF /* UIImage+ForceDecode.m in Sources */,
 				0014BBAC24E2706A00C01961 /* CollectionLeftFlowLayout.m in Sources */,
 				005127DB24E018E200C010D0 /* XHSCollectionVIewCell.m in Sources */,
+				00939FF824E4E5A200CD867B /* TagCollectionViewFlowLayout.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

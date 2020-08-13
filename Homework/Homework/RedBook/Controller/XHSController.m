@@ -22,9 +22,9 @@
 * @备注:
 */
 @interface XHSController () <UITableViewDelegate,
-                             UITableViewDataSource,
-                             UICollectionViewDelegate,
-                             UICollectionViewDataSource>
+UITableViewDataSource,
+UICollectionViewDelegate,
+UICollectionViewDataSource>
 /// 左则标题
 @property (nonatomic, strong) UITableView *tableView;
 /// 右侧商品

@@ -1,14 +1,15 @@
 //
-//  CollectionLeftFlowLayout.m
+//  TagCollectionViewFlowLayout.m
 //  Homework
 //
-//  Created by xihou damowang on 2020/8/11.
+//  Created by xihou damowang on 2020/8/13.
 //  Copyright © 2020 夕厚大魔王. All rights reserved.
 //
 
-#import "CollectionLeftFlowLayout.h"
+#import "TagCollectionViewFlowLayout.h"
 
-@implementation CollectionLeftFlowLayout
+@implementation TagCollectionViewFlowLayout
+
 - (NSArray *) layoutAttributesForElementsInRect:(CGRect)rect {
     // 获取所有item的布局属性
     NSArray *answer = [super layoutAttributesForElementsInRect:rect];
@@ -24,7 +25,7 @@
         if(preY == curY){
             //满足则给当前cell的frame属性赋值
             CGRect frame = currentLayoutAttributes.frame;
-            frame.origin.x = preX;
+            frame.origin.x = preX+10;
             currentLayoutAttributes.frame = frame;
         }else {
             CGRect frame = currentLayoutAttributes.frame;
@@ -34,7 +35,5 @@
     }
     return answer;
 }
-
-
 
 @end
