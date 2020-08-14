@@ -15,6 +15,7 @@
 #import "View1Controller.h"
 #import "VIew3Controller.h"
 #import "PayLiveController.h"
+#import "TimingHomeController.h"
 
 @interface ViewController () <UITableViewDelegate,
 UITableViewDataSource,
@@ -25,6 +26,7 @@ View3Delegate>
 @property (nonatomic, strong) NSDictionary *xhsDic;
 @property (nonatomic, strong) NSDictionary *selecTagDic;
 @property (nonatomic, strong) NSDictionary *vc1Dic;
+@property (nonatomic, strong) NSDictionary *timingDic;
 
 @end
 
@@ -33,19 +35,17 @@ View3Delegate>
 #pragma mark - Life cycle
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.payLiveDic = [[NSDictionary alloc] initWithObjectsAndKeys:
-                                                              @"payLiveVC", @"title",
-                                                              @"2020-08-09", @"createTime", nil];
-    self.xhsDic = [[NSDictionary alloc] initWithObjectsAndKeys:
-                                                              @"小红书页面", @"title",
-                                                              @"2020-08-09", @"createTime", nil];
-    self.selecTagDic = [[NSDictionary alloc] initWithObjectsAndKeys:
-                                                              @"selectTagVC", @"title",
-                                                              @"2020-08-11", @"createTime",nil];
-    self.vc1Dic = [[NSDictionary alloc] initWithObjectsAndKeys:
-                                                              @"transimitVC", @"title",
-                                                              @"2020-08-11", @"createTime", nil];
-    self.VCArr = [[NSArray alloc] initWithObjects:self.payLiveDic, self.xhsDic,self.selecTagDic, self.vc1Dic, nil];
+    self.payLiveDic = [[NSDictionary alloc] initWithObjectsAndKeys:@"payLiveVC", @"title",
+                                                                   @"2020-08-09", @"createTime", nil];
+    self.xhsDic = [[NSDictionary alloc] initWithObjectsAndKeys:@"小红书页面", @"title",
+                                                               @"2020-08-09", @"createTime", nil];
+    self.selecTagDic = [[NSDictionary alloc] initWithObjectsAndKeys:@"selectTagVC", @"title",
+                                                                    @"2020-08-11", @"createTime",nil];
+    self.vc1Dic = [[NSDictionary alloc] initWithObjectsAndKeys: @"transimitVC", @"title",
+                                                                @"2020-08-11", @"createTime", nil];
+    self.timingDic = [[NSDictionary alloc] initWithObjectsAndKeys:@"Timing首页", @"title",
+                                                                 @"2020-08-14", @"createTime", nil];
+    self.VCArr = [[NSArray alloc] initWithObjects:self.payLiveDic, self.xhsDic,self.selecTagDic, self.vc1Dic, self.timingDic, nil];
     self.navigationItem.title = @"作业";
     [self.view addSubview:self.tableview];
     
@@ -102,13 +102,18 @@ View3Delegate>
             controller = [SelectTageController new];
             break;
         case 3:
-            NSLog(@"");
+            {NSLog(@"");
             View1Controller *vc1 = [View1Controller new];
             vc1.block = ^(NSString *str){
                 NSLog(@"block----%@",str);
             };
             vc1.delegate = self;
             controller = vc1;
+            break;
+            
+            }
+        case 4:
+            controller = [TimingHomeController new];
             break;
     }
     return controller;

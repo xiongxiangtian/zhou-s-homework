@@ -57,6 +57,10 @@
 		00741CC924DAD77600F857CF /* MyNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00741CC824DAD77600F857CF /* MyNavigationController.m */; };
 		00939FF824E4E5A200CD867B /* TagCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 00939FF724E4E5A200CD867B /* TagCollectionViewFlowLayout.m */; };
 		00939FFC24E539B300CD867B /* TagHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 00939FFB24E539B300CD867B /* TagHeader.m */; };
+		00939FFF24E566FA00CD867B /* UAAController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00939FFE24E566FA00CD867B /* UAAController.m */; };
+		0093A00224E630AE00CD867B /* TimingHomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0093A00124E630AE00CD867B /* TimingHomeController.m */; };
+		0093A00924E63D7600CD867B /* BaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0093A00824E63D7600CD867B /* BaseCell.m */; };
+		0093A00C24E63FA800CD867B /* TimingHomeHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0093A00B24E63FA800CD867B /* TimingHomeHeader.m */; };
 		00CF515424DC39040092F229 /* MyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 00CF515324DC39040092F229 /* MyCell.m */; };
 		00D8746724D8299F00FA5AEF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 00D8746624D8299F00FA5AEF /* AppDelegate.m */; };
 		00D8746D24D8299F00FA5AEF /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00D8746C24D8299F00FA5AEF /* ViewController.m */; };
@@ -169,6 +173,14 @@
 		00939FF724E4E5A200CD867B /* TagCollectionViewFlowLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TagCollectionViewFlowLayout.m; sourceTree = "<group>"; };
 		00939FFA24E539B300CD867B /* TagHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TagHeader.h; sourceTree = "<group>"; };
 		00939FFB24E539B300CD867B /* TagHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TagHeader.m; sourceTree = "<group>"; };
+		00939FFD24E566FA00CD867B /* UAAController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UAAController.h; sourceTree = "<group>"; };
+		00939FFE24E566FA00CD867B /* UAAController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UAAController.m; sourceTree = "<group>"; };
+		0093A00024E630AE00CD867B /* TimingHomeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TimingHomeController.h; sourceTree = "<group>"; };
+		0093A00124E630AE00CD867B /* TimingHomeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TimingHomeController.m; sourceTree = "<group>"; };
+		0093A00724E63D7600CD867B /* BaseCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseCell.h; sourceTree = "<group>"; };
+		0093A00824E63D7600CD867B /* BaseCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseCell.m; sourceTree = "<group>"; };
+		0093A00A24E63FA800CD867B /* TimingHomeHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TimingHomeHeader.h; sourceTree = "<group>"; };
+		0093A00B24E63FA800CD867B /* TimingHomeHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TimingHomeHeader.m; sourceTree = "<group>"; };
 		00CF515224DC39040092F229 /* MyCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyCell.h; sourceTree = "<group>"; };
 		00CF515324DC39040092F229 /* MyCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyCell.m; sourceTree = "<group>"; };
 		00D8746224D8299F00FA5AEF /* Homework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Homework.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -239,6 +251,8 @@
 			children = (
 				0014BBAE24E2C1F000C01961 /* SelectTageController.h */,
 				0014BBAF24E2C1F000C01961 /* SelectTageController.m */,
+				00939FFD24E566FA00CD867B /* UAAController.h */,
+				00939FFE24E566FA00CD867B /* UAAController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -431,6 +445,43 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		0093A00324E630B800CD867B /* TimingHomePage */ = {
+			isa = PBXGroup;
+			children = (
+				0093A00624E63D2B00CD867B /* Model */,
+				0093A00524E63D2600CD867B /* View */,
+				0093A00424E63D2000CD867B /* Controller */,
+			);
+			path = TimingHomePage;
+			sourceTree = "<group>";
+		};
+		0093A00424E63D2000CD867B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0093A00024E630AE00CD867B /* TimingHomeController.h */,
+				0093A00124E630AE00CD867B /* TimingHomeController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		0093A00524E63D2600CD867B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0093A00724E63D7600CD867B /* BaseCell.h */,
+				0093A00824E63D7600CD867B /* BaseCell.m */,
+				0093A00A24E63FA800CD867B /* TimingHomeHeader.h */,
+				0093A00B24E63FA800CD867B /* TimingHomeHeader.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0093A00624E63D2B00CD867B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		00D8745924D8299F00FA5AEF = {
 			isa = PBXGroup;
 			children = (
@@ -452,6 +503,7 @@
 		00D8746424D8299F00FA5AEF /* Homework */ = {
 			isa = PBXGroup;
 			children = (
+				00741C7224DAA00C00F857CF /* SDWebImage */,
 				00D8746B24D8299F00FA5AEF /* ViewController.h */,
 				00D8746C24D8299F00FA5AEF /* ViewController.m */,
 				00741CC724DAD77600F857CF /* MyNavigationController.h */,
@@ -466,7 +518,7 @@
 				0014BBAD24E2C1BB00C01961 /* SelectTag */,
 				005127DD24E02EEB00C010D0 /* RedBook */,
 				0014BB9124E133BE00C01961 /* PayLive */,
-				00741C7224DAA00C00F857CF /* SDWebImage */,
+				0093A00324E630B800CD867B /* TimingHomePage */,
 			);
 			path = Homework;
 			sourceTree = "<group>";
@@ -619,11 +671,13 @@
 				00741CBA24DAA00D00F857CF /* SDAnimatedImageRep.m in Sources */,
 				005127D824E00F0300C010D0 /* XHSTableViewCell.m in Sources */,
 				0014BBBB24E2D8C100C01961 /* View1Controller.m in Sources */,
+				0093A00C24E63FA800CD867B /* TimingHomeHeader.m in Sources */,
 				0014BBC824E3EBC400C01961 /* DataModel.m in Sources */,
 				0014BBBE24E2DA9A00C01961 /* View2Controller.m in Sources */,
 				00741CBE24DAA00D00F857CF /* NSData+ImageContentType.m in Sources */,
 				00741CBB24DAA00D00F857CF /* SDImageCache.m in Sources */,
 				00D8746724D8299F00FA5AEF /* AppDelegate.m in Sources */,
+				00939FFF24E566FA00CD867B /* UAAController.m in Sources */,
 				00741CC424DAA00D00F857CF /* UIView+WebCache.m in Sources */,
 				00741CC924DAD77600F857CF /* MyNavigationController.m in Sources */,
 				00741CB824DAA00D00F857CF /* SDWebImageCoder.m in Sources */,
@@ -635,10 +689,12 @@
 				00741CBD24DAA00D00F857CF /* SDWebImageTransition.m in Sources */,
 				00741CB224DAA00D00F857CF /* SDWebImageDownloader.m in Sources */,
 				00741CB624DAA00D00F857CF /* SDWebImageCompat.m in Sources */,
+				0093A00224E630AE00CD867B /* TimingHomeController.m in Sources */,
 				00741C6124DA4E8A00F857CF /* SPUser.m in Sources */,
 				0014BB8C24E0E29100C01961 /* XHSCollectionTitleCell.m in Sources */,
 				0014BBB024E2C1F000C01961 /* SelectTageController.m in Sources */,
 				00741CB424DAA00D00F857CF /* UIImage+MultiFormat.m in Sources */,
+				0093A00924E63D7600CD867B /* BaseCell.m in Sources */,
 				00741CBC24DAA00D00F857CF /* SDWebImageDownloaderOperation.m in Sources */,
 				00741CB724DAA00D00F857CF /* SDWebImagePrefetcher.m in Sources */,
 				00741CC524DAA00D00F857CF /* SDWebImageImageIOCoder.m in Sources */,

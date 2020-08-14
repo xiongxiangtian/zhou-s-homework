@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol CollectionModel <NSObject>
 @end
 
-@interface CollectionModel : JSONModel
+@interface CollectionModel : JSONModel<NSCoding>
 /// 标签名称
 @property (nonatomic, strong) NSString *name;
 /// 标签ID

@@ -15,6 +15,21 @@
     return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{@"info_id" : @"id"}];
 }
 
+- (void)encodeWithCoder:(NSCoder *)coder
+{
+    [super encodeWithCoder:coder];
+    [coder encodeObject:self.name forKey:@"name"];
+    [coder encodeObject:self.info_id forKey:@"info_id"];
+    [coder encodeObject:self.tag forKey:@"tag"];
+}
 
+-(instancetype)initWithCoder:(NSCoder *)coder {
+    if (self = [super init]) {
+        self.name = [coder decodeObjectForKey:@"name"];
+        self.info_id = [coder decodeObjectForKey:@"info_id"];
+        self.tag = [coder decodeObjectForKey:@"tag"];
+    }
+    return self;
+}
 
 @end

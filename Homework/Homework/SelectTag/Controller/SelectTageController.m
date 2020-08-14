@@ -12,6 +12,7 @@
 #import "DataModel.h"
 #import "SelectTagCell.h"
 #import "TagHeader.h"
+#import "UAAController.h"
 
 @interface SelectTageController () <
 UITableViewDelegate,
@@ -44,12 +45,27 @@ CollectionItemClickDelegate>
 
 #pragma mark - Action
 - (void)doneButtonClick {
-    NSArray *arr = self.selectedModels.allKeys;
-    for (int i=0 ; i<arr.count; i++) {
-        NSLog(@"%@",arr[i]);
-    }
-    //单选
-//    NSLog(@"%@",self.oneModel.name);
+//    NSArray *arr = self.selectedModels.allKeys;
+//    for (int i=0 ; i<arr.count; i++) {
+//        NSLog(@"%@",arr[i]);
+//    }
+//
+    UAAController *controller = [UAAController new];
+    [self.navigationController pushViewController:controller animated:YES];
+
+    
+    NSString *docPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)lastObject];
+    NSString *dictPath = [docPath stringByAppendingPathComponent:@"123.123"];
+    [NSKeyedArchiver archiveRootObject:self.selectedModels toFile:dictPath];
+
+    
+    
+    
+    NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+    NSDictionary *dict = [NSDictionary dictionaryWithDictionary:self.selectedModels];
+    NSData * _Nonnull data = [NSKeyedArchiver archivedDataWithRootObject:dict];
+    [user setObject:data forKey:@"selectedTags"];
+    [user synchronize];
 }
 
 #pragma mark - Custom Function
@@ -145,7 +161,7 @@ CollectionItemClickDelegate>
                         
                         [self.selectedModels setObject:collectionModel forKey:collectionModel.name];
                         //单选
-//                        self.oneModel = collectionModel;
+                        self.oneModel = collectionModel;
                     }
                 }
                 len += collectionModel.name.length*13+20;
