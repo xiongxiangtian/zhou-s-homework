@@ -9,9 +9,12 @@
 #import "View2Controller.h"
 #import "VIew3Controller.h"
 
-@interface View2Controller ()
+@interface View2Controller ()<View3Delegate>
 
 @property (nonatomic, copy)NSString *textStr;
+
+@property (nonatomic, copy)NSString *delegeteStr;
+
 
 @end
 
@@ -25,12 +28,14 @@
     [self.view addSubview: button];
     [button addTarget:self action:@selector(btnClick) forControlEvents:UIControlEventTouchUpInside];
     
-    self.block(self.textStr);
+
 }
 - (void)btnClick {
     VIew3Controller *vc3 = [VIew3Controller new];
     
     [self.navigationController pushViewController:vc3 animated:YES];
+    vc3.delegate = self;
+    
     
     vc3.block = ^(NSString *str) {
         self.textStr = str;
@@ -38,14 +43,16 @@
     };
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void)dealloc {
+    NSLog(@"222222222222释放");;
 }
-*/
+
+
+
+- (void)View3Transimit:(NSString *)str {
+//    self.delegeteStr = str;
+    [self.delegate View3Transimit:str];
+}
+
 
 @end

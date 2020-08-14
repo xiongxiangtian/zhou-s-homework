@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CollectionModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SelectTageController : UIViewController
+
+@property (nonatomic, strong) CollectionModel *oneModel;
 
 @end
 

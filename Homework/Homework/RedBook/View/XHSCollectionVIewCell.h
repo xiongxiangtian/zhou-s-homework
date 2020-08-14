@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Model3.h"
+#import "Model1.h"
+
 
 NS_ASSUME_NONNULL_BEGIN
 /**
@@ -19,7 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface XHSCollectionVIewCell : UICollectionViewCell
 /// 商品模型
 
-@property (nonatomic, strong) Model3 *model3;
+@property (nonatomic, strong) Model1 *model;
 
 @end
 
